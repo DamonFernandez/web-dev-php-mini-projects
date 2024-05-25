@@ -58,10 +58,10 @@ function getFileContentInArrayForm(){
         <button name="submitButton" type="submit">Submit</button>
     </form>
 
-    <output> 
+  
     
     <h2> Base File Content:</h2>
-    <p> 
+    <output> 
     <?php if(isset($fileContent)):?>
     <?php
         $foreach($fileContent as $currentLine): ?>
@@ -69,12 +69,12 @@ function getFileContentInArrayForm(){
   
     <?php endforeach; ?>
     <?php endif; ?>
-    </p>
+    </output>
 
 
     <h2> Number of words per line </h2>
-    <p> <?= countNumberOfWordsPerLine($fileContent)?> </p>
-    </output>
+    <output> <?= countNumberOfWordsPerLine($fileContent)?> </output>
+  
 
 </body>
 </html>
