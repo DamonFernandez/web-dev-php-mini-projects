@@ -50,6 +50,28 @@ function countNumberOfACharactersPerLine($fileContent){
 }
 
 
+// for simplicity, we'll consider them to be characters with an ascii value between 32-47) You could certainly accomplish this with regular expressions, but it can also be done fairy easily with basic php functions.
+function countNumberOfCommonPunctuationCharactersPerLine($fileContent){
+
+}
+
+
+// irrespective of case).
+function sortStringDescAlphabeticalPerLine($fileContent){
+
+}
+// The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
+function printMiddleThirdCharacterPerLine($fileContent){
+
+}
+
+
+function filterStrings($fileContent){
+
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
