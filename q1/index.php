@@ -1,5 +1,7 @@
 <?php 
-$_
+
+$submitButton = $_POST[]
+
 
 
 ?>
@@ -22,6 +24,10 @@ $_
             <label for="filePicker"></label>
             <input id="filePicker" type="file">
         </fieldset>
+
+        <button type="submit">Submit</button>
     </form>
+
+    <output></output>
 </body>
 </html>
