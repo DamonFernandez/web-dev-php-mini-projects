@@ -30,6 +30,7 @@ function getFileContentInArrayForm(){
     $file = $_FILES["filePicker"] ?? null;
     $fileContentStringForm = file_get_contents($file['tmp_name']);
     $fileContentArrayForm = explode("\n", $fileContentArrayForm)
+    return $fileContentArrayForm;
 }
 
 ?>
@@ -72,7 +73,7 @@ function getFileContentInArrayForm(){
 
 
     <h2> Number of words per line </h2>
-    <p> <?= countNumberOfWordsPerLine()?> </p>
+    <p> <?= countNumberOfWordsPerLine($fileContent)?> </p>
     </output>
 
 </body>
