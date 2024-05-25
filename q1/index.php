@@ -1,6 +1,8 @@
 <?php 
 
 
+
+
 if(isset($_POST["submitButton"]) && isset($_FILES["filePicker"])){
     
     $textBoxValue = $_POST["textBox"] ?? "";
@@ -10,14 +12,18 @@ if(isset($_POST["submitButton"]) && isset($_FILES["filePicker"])){
 
     $fileContent = getFileContentInArrayForm();
 
-    $numberOfWordsP
 
 }
 
 }
 
 function countNumberOfWordsPerLine(fileContent){
-
+    $lineCounter = 1;
+    foreach($fileContent as $currentLine){
+        $amountOfWordsInCurrentLine = count(explode(" ", $currentLine));
+        echo "Amount of words in line $lineCounter: $amountOfWordsInCurrentLine";
+        lineCounter++;
+    }
 }
 
 function getFileContentInArrayForm(){
@@ -53,15 +59,21 @@ function getFileContentInArrayForm(){
 
     <output> 
     
-    <p> Base File Content:
+    <h2> Base File Content:</h2>
+    <p> 
     <?php if(isset($fileContent)):?>
     <?php
-        $foreach($currentLine as $fileContent): ?>
+        $foreach($fileContent as $currentLine): ?>
             <?= $currentLine ?>
   
     <?php endforeach; ?>
     <?php endif; ?>
     </p>
+
+
+    <h2> Number of words per line </h2>
+    <p> <?= countNumberOfWordsPerLine()?> </p>
     </output>
+
 </body>
 </html>
