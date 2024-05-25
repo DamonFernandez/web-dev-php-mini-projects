@@ -34,7 +34,7 @@ function countNumberOfWordsPerLine($fileContent){
     }
 }
 
-function countNumberOfACharacters($fileContent){
+function countNumberOfACharactersPerLine($fileContent){
     $lineCounter = 1;
 
     foreach($fileContent as $currentLine){
@@ -92,6 +92,9 @@ function countNumberOfACharacters($fileContent){
     <h2> Number of words per line </h2>
     <output> <?= countNumberOfWordsPerLine($fileContent)?> </output>
   
+
+    <h2>Number of A's and a's per line</h2>
+    <output> <?= countNumberOfACharactersPerLine($fileContent)?></output>
 
 
 </body>
