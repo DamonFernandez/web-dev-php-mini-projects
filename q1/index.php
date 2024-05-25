@@ -17,14 +17,6 @@ if(isset($_POST["submitButton"]) && isset($_FILES["filePicker"])){
 
 }
 
-function countNumberOfWordsPerLine(fileContent){
-    $lineCounter = 1;
-    foreach($fileContent as $currentLine){
-        $amountOfWordsInCurrentLine = count(explode(" ", $currentLine));
-        echo "Amount of words in line $lineCounter: $amountOfWordsInCurrentLine";
-        lineCounter++;
-    }
-}
 
 function getFileContentInArrayForm(){
     $file = $_FILES["filePicker"] ?? null;
@@ -32,6 +24,31 @@ function getFileContentInArrayForm(){
     $fileContentArrayForm = explode("\n", $fileContentArrayForm)
     return $fileContentArrayForm;
 }
+
+function countNumberOfWordsPerLine($fileContent){
+    $lineCounter = 1;
+    foreach($fileContent as $currentLine){
+        $amountOfWordsInCurrentLine = count(explode(" ", $currentLine));
+        echo "Amount of words in line $lineCounter: $amountOfWordsInCurrentLine<br>";
+        $lineCounter++;
+    }
+}
+
+function countNumberOfACharacters($fileContent){
+    $lineCounter = 1;
+
+    foreach($fileContent as $currentLine){
+        $numberOfACharactersCounter = 0;
+
+        $numberOfACharactersCounter += substr_count($currentLine, "a");
+        $numberOfACharactersCounter += substr_count($currentLine, "A");
+
+        echo "Amount of a's and A's in line $lineCounter: $numberOfACharactersCounter<br>";
+
+        $lineCounter++;
+    }
+}
+
 
 ?>
 
@@ -75,6 +92,7 @@ function getFileContentInArrayForm(){
     <h2> Number of words per line </h2>
     <output> <?= countNumberOfWordsPerLine($fileContent)?> </output>
   
+
 
 </body>
 </html>
