@@ -80,7 +80,8 @@ class Question {
     }
 }
 
-$question = new Question(
+
+$questionOne = new Question(
     "What is the capital of France?",
     "Berlin",
     "Madrid",
@@ -88,7 +89,41 @@ $question = new Question(
     "Rome",
     "Paris"
 );
+$questionTwo = new Question(
+    "HTML: For any decorative image that we use that is not meaningful what should we do in terms of the alt attribute for the element?",
+    "set the alt attribute to the number 404",
+    "We should use the alt attributes set to an empty string",
+    "We should not use any alt attribute",
+    "Set the alt attribute to \"descriptive\"",
+    "We should use the alt attributes set to an empty string"
+);
+$questionThree = new Question(
+    "What part of a computer handles logical operations?",
+    "ALU",
+    "FPU",
+    "CPU",
+    "The brain",
+    "ALU"
+);
+$questionFour = new Question(
+    "What is the capital of India?",
+    "Berlin",
+    "Madrid",
+    "New Delhi",
+    "Pakistan",
+    "New Delhi"
+);
+$questionFive = new Question(
+    "JS: What is an IIFE function?",
+    "An function that we pass into another function",
+    "An private function",
+    "an function that returns nothing",
+    "A function that is executed immediately after being defined",
+    "A function that is executed immediately after being defined"
+);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
