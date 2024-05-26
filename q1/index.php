@@ -2,27 +2,34 @@
 
 
 
+   
+    $fileContent = getFileContentInArrayForm() ?? [];
+
+
+    
+
+
+
 
 if(isset($_POST["submitButton"]) && isset($_FILES["filePicker"])){
     
     $textBoxValue = $_POST["textBox"] ?? "";
-    
-    // Checking for an error
-    if($file['error'] == 0){
-
-    $fileContent = getFileContentInArrayForm();
-
 
 }
 
+else{
+    $fileContent = [];
 }
 
 
-function getFileContentInArrayForm(){
+function getFileContentInArrayForm() {
     $file = $_FILES["filePicker"] ?? null;
-    $fileContentStringForm = file_get_contents($file['tmp_name']);
-    $fileContentArrayForm = explode("\n", $fileContentArrayForm)
-    return $fileContentArrayForm;
+    if ($file !== null && isset($file['tmp_name'])) {
+        $fileContentStringForm = file_get_contents($file['tmp_name']);
+        $fileContentArrayForm = explode("\n", $fileContentStringForm);
+        return $fileContentArrayForm;
+    }
+    return []; // Return an empty array if the file isn't set or theres no tmp_name
 }
 
 function countNumberOfWordsPerLine($fileContent){
@@ -83,14 +90,14 @@ function filterStrings($fileContent){
 </head>
 <body>
     <h1>Assignment One - Question One</h1>
-    <form method="post" enctype="multipart/form-data>
+    <form method="post" enctype="multipart/form-data">
         <fieldset>
-            <label for="textBox"></label>
+            <label for="textBox">Search:</label>
             <input name="textBox" id="textBox"type="text">
         </fieldset>
 
         <fieldset>
-            <label for="filePicker"></label>
+            <label for="filePicker">File Picker:</label>
             <input name="filePicker" id="filePicker" type="file">
         </fieldset>
 
@@ -103,7 +110,7 @@ function filterStrings($fileContent){
     <output> 
     <?php if(isset($fileContent)):?>
     <?php
-        $foreach($fileContent as $currentLine): ?>
+        foreach($fileContent as $currentLine): ?>
             <?= $currentLine ?>
   
     <?php endforeach; ?>

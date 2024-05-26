@@ -5,6 +5,18 @@ $choiceTwo= "choice one";
 $choiceThree = "choice one";
 $choiceFour = "choice one";
 
+
+function checkForSubmissionButton(){
+    
+}
+
+
+class Question{
+
+    Question(){
+
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +30,10 @@ $choiceFour = "choice one";
     <h1>Assignment One - Question Two</h1>
 
     <form action="">
-    <button><?= $choiceOne?></button>
-    <button><?= $choiceTwo?></button>
-    <button><?= $choiceThree?></button>
-    <button><?= $choiceFour?></button>
+    <button name="choiceOne" type="submit"><?= $choiceOne?></button>
+    <button name="choiceTwo" type="submit"><?= $choiceTwo?></button>
+    <button name="choiceThree" type="submit"><?= $choiceThree?></button>
+    <button name="choiceFour" type="submit"><?= $choiceFour?></button>
     </form>
 
 </body>
