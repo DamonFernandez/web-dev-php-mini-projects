@@ -44,7 +44,7 @@ function countNumberOfWordsPerLine($fileContent)
     }
 }
 
-function countNumberOfACharactersPerLine($fileContent)
+function countNumberOfACharacters($fileContent)
 {
     $lineCounter = 1;
 
@@ -62,23 +62,53 @@ function countNumberOfACharactersPerLine($fileContent)
 
 
 // for simplicity, we'll consider them to be characters with an ascii value between 32-47) You could certainly accomplish this with regular expressions, but it can also be done fairy easily with basic php functions.
-function countNumberOfCommonPunctuationCharactersPerLine($fileContent)
+// Counts spaces
+function countNumberOfCommonPunctuationChars($fileContent)
 {
+    $lineCounter = 1;
+
+    foreach ($fileContent as $currentLine) {
+        $numberOfCommonPunctuationCharacters = 0;
+        $characters = str_split($currentLine);
+    
+        foreach ($characters as $char) {
+            $asciiValue = ord($char);
+            if ($asciiValue >= 32 && $asciiValue <= 47) {
+                $numberOfCommonPunctuationCharacters++;
+            }
+        }
+
+
+        echo "Amount of common punctuation in line $lineCounter: $numberOfCommonPunctuationCharacters<br>";
+
+        $lineCounter++;
+    }
 }
 
 
 // irrespective of case).
-function sortStringDescAlphabeticalPerLine($fileContent)
+function sortFileContentDescAlphabetical($fileContent)
 {
 }
 // The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
-function printMiddleThirdCharacterPerLine($fileContent)
+function printMiddleThirdCharacter($fileContent)
 {
 }
 
 
 function filterStrings($fileContent)
 {
+}
+
+function printBaseFileContent($fileContent){
+    $lineCounter = 1;
+
+    if(isset($fileContent)){
+        foreach($fileContent as $currentLine){
+            echo "Line $lineCounter: $currentLine <br>";
+            $lineCounter++;
+        }
+    }
 }
 
 
@@ -114,12 +144,7 @@ function filterStrings($fileContent)
 
     <h2> Base File Content:</h2>
     <output>
-        <?php if (isset($fileContent)) : ?>
-            <?php
-            foreach ($fileContent as $currentLine) : ?>
-                <?= $currentLine ?><br>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <?= printBaseFileContent($fileContent) ?>
     </output>
 
 
@@ -128,7 +153,10 @@ function filterStrings($fileContent)
 
 
     <h2>Number of A's and a's per line</h2>
-    <output> <?= countNumberOfACharactersPerLine($fileContent) ?></output>
+    <output> <?= countNumberOfACharacters($fileContent) ?></output>
+
+    <h2> Number of common punctuation  characters per line</h2>
+    <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
 
 
 </body>
