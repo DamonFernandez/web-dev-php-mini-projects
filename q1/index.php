@@ -1,13 +1,11 @@
 <?php
 
 
+$fileContent = [];
 
-
-$fileContent = getFileContentInArrayForm() ?? [];
-
-
+$errors = [];
 if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
-
+    $fileContent = getFileContentInArrayForm();
     $textBoxValue = $_POST["textBox"] ?? "";
 } else {
     $fileContent = [];
@@ -17,7 +15,8 @@ if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
 function getFileContentInArrayForm()
 {
     $file = $_FILES["filePicker"] ?? null;
-    if ($file !== null && isset($file['tmp_name'])) {
+    if ($file && $file['tmp_name']) {
+        $errors['file'] = true;
         $fileContentStringForm = file_get_contents($file['tmp_name']);
         $fileContentArrayForm = explode("\n", $fileContentStringForm);
         $fileContentArrayForm =  array_filter($fileContentArrayForm, function ($line) {
@@ -133,10 +132,17 @@ function printBaseFileContent($fileContent)
         </fieldset>
 
         <button name="submitButton" type="submit">Submit</button>
+        <span class="error">
+            <?php
+            if (isset($errors['file'])) {
+                echo "Please select a file";
+            }
+            ?>
+        </span>
     </form>
 
 
-    <?php if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) : ?>
+    <?php if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) : ?>
         <h2> Base File Content:</h2>
         <output>
             <?= printBaseFileContent($fileContent) ?>
