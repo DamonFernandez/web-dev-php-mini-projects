@@ -62,13 +62,14 @@ function countNumberOfACharacters($fileContent)
 
 
 // for simplicity, we'll consider them to be characters with an ascii value between 32-47) You could certainly accomplish this with regular expressions, but it can also be done fairy easily with basic php functions.
+// Counts spaces
 function countNumberOfCommonPunctuationChars($fileContent)
 {
     $lineCounter = 1;
 
     foreach ($fileContent as $currentLine) {
         $numberOfCommonPunctuationCharacters = 0;
-        $characters = str_split($str);
+        $characters = str_split($currentLine);
     
         foreach ($characters as $char) {
             $asciiValue = ord($char);
