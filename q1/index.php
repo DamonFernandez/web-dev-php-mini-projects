@@ -62,7 +62,7 @@ function countNumberOfACharacters($fileContent)
 
 
 // for simplicity, we'll consider them to be characters with an ascii value between 32-47) You could certainly accomplish this with regular expressions, but it can also be done fairy easily with basic php functions.
-function countNumberOfCommonPunctuationCharacters($fileContent)
+function countNumberOfCommonPunctuationChars($fileContent)
 {
     $lineCounter = 1;
 
@@ -99,7 +99,16 @@ function filterStrings($fileContent)
 {
 }
 
-function printBaseFileContent($fileContent);
+function printBaseFileContent($fileContent){
+    $lineCounter = 1;
+
+    if(isset($fileContent)){
+        foreach($fileContent as $currentLine){
+            echo "Line $lineCounter: $currentLine <br>";
+            $lineCounter++;
+        }
+    }
+}
 
 
 
@@ -134,12 +143,7 @@ function printBaseFileContent($fileContent);
 
     <h2> Base File Content:</h2>
     <output>
-        <?php if (isset($fileContent)) : ?>
-            <?php
-            foreach ($fileContent as $currentLine) : ?>
-                <?= $currentLine . "<br>" ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <?= printBaseFileContent($fileContent) ?>
     </output>
 
 
@@ -151,7 +155,7 @@ function printBaseFileContent($fileContent);
     <output> <?= countNumberOfACharacters($fileContent) ?></output>
 
     <h2> Number of common punctuation  characters per line</h2>
-    <output> <?= countNumberOfCommonPunctuationCharacters($fileContent)?></output>
+    <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
 
 
 </body>
