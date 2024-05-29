@@ -28,7 +28,6 @@ function getFileContentInArrayForm()
         $fileContentArrayForm =  array_filter($fileContentArrayForm, function ($line) {
             return trim($line) !== "";
         });
-        var_dump($fileContentArrayForm);
         return $fileContentArrayForm;
     }
     return []; // Return an empty array if the file isn't set or theres no tmp_name
@@ -87,8 +86,22 @@ function countNumberOfCommonPunctuationChars($fileContent)
 
 
 // irrespective of case).
-function sortFileContentDescAlphabetical($fileContent)
+function sortFileStringsDescAlphabetical($fileContent)
 {
+    $lineCounter = 1;
+
+    foreach ($fileContent as $currentLine) {
+        $modifiedCurrentLine = explode(" ", $currentLine);
+        natcasesort($modifiedCurrentLine); 
+        $modifiedCurrentLine = array_reverse($modifiedCurrentLine);
+        var_dump($modifiedCurrentLine);
+        $modifiedCurrentLine = implode(" ", $modifiedCurrentLine);
+
+
+        echo "Line $lineCounter: $modifiedCurrentLine <br>";
+
+        $lineCounter++;
+}
 }
 // The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
 function printMiddleThirdCharacter($fileContent)
@@ -157,6 +170,10 @@ function printBaseFileContent($fileContent){
 
     <h2> Number of common punctuation  characters per line</h2>
     <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
+
+    <h2> String in Descending Alphabetical Order</h2>
+    <output> <?= sortFileStringsDescAlphabetical($fileContent)?></output>
+
 
 
 </body>
