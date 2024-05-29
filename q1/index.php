@@ -6,11 +6,6 @@
 $fileContent = getFileContentInArrayForm() ?? [];
 
 
-
-
-
-
-
 if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
 
     $textBoxValue = $_POST["textBox"] ?? "";
@@ -28,7 +23,6 @@ function getFileContentInArrayForm()
         $fileContentArrayForm =  array_filter($fileContentArrayForm, function ($line) {
             return trim($line) !== "";
         });
-        var_dump($fileContentArrayForm);
         return $fileContentArrayForm;
     }
     return []; // Return an empty array if the file isn't set or theres no tmp_name
@@ -70,7 +64,7 @@ function countNumberOfCommonPunctuationChars($fileContent)
     foreach ($fileContent as $currentLine) {
         $numberOfCommonPunctuationCharacters = 0;
         $characters = str_split($currentLine);
-    
+
         foreach ($characters as $char) {
             $asciiValue = ord($char);
             if ($asciiValue >= 32 && $asciiValue <= 47) {
@@ -100,11 +94,12 @@ function filterStrings($fileContent)
 {
 }
 
-function printBaseFileContent($fileContent){
+function printBaseFileContent($fileContent)
+{
     $lineCounter = 1;
 
-    if(isset($fileContent)){
-        foreach($fileContent as $currentLine){
+    if (isset($fileContent)) {
+        foreach ($fileContent as $currentLine) {
             echo "Line $lineCounter: $currentLine <br>";
             $lineCounter++;
         }
@@ -141,24 +136,24 @@ function printBaseFileContent($fileContent){
     </form>
 
 
-
-    <h2> Base File Content:</h2>
-    <output>
-        <?= printBaseFileContent($fileContent) ?>
-    </output>
-
-
-    <h2> Number of words per line </h2>
-    <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
+    <?php if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) : ?>
+        <h2> Base File Content:</h2>
+        <output>
+            <?= printBaseFileContent($fileContent) ?>
+        </output>
 
 
-    <h2>Number of A's and a's per line</h2>
-    <output> <?= countNumberOfACharacters($fileContent) ?></output>
-
-    <h2> Number of common punctuation  characters per line</h2>
-    <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
+        <h2> Number of words per line </h2>
+        <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
 
 
+        <h2>Number of A's and a's per line</h2>
+        <output> <?= countNumberOfACharacters($fileContent) ?></output>
+
+        <h2> Number of common punctuation characters per line</h2>
+        <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
+
+    <?php endif ?>
 </body>
 
 </html>
