@@ -1,14 +1,12 @@
 <?php
 
-
+session_start();
 if (isset($_POST['restart'])) {
-    $correct = array();
-    $current_question = 0;
     session_destroy();
-    session_start();
+    header('Refresh:0');
 }
 
-session_start();
+
 
 if (!(isset($_SESSION["correct"]) || isset($_SESSION["current_question"]))) {
     $_SESSION["correct"] = array();
@@ -60,7 +58,7 @@ if ($current_question >= count($questions)) {
         <input type="radio" name="choice" value="3" id="3">
         <label for="choiceFour"><?= $questions[$current_question]->getChoiceFour() ?></label>
         <button type="submit" name="submit">Submit</button>
-        <button name="restart">Try Again</button>
+        <button name="restart"> Restart </button>
     </form>
 
 </body>
