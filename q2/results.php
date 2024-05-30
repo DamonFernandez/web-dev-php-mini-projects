@@ -2,8 +2,9 @@
 
 $score = 0;
 session_start();
-if (isset($_SESSION['correct'])) {
-    $correct = $_SESSION['correct'];
+require_once("./questions.php");
+if (isset($_SESSION['feedback'])) {
+    $feedback = $_SESSION['feedback'];
 } else {
     header('Location: index.php');
 }
@@ -12,9 +13,20 @@ if (isset($_GET['submit'])) {
     header('Location: index.php');
     exit();
 }
-foreach ($correct as $ans) {
-    $score += $ans ? 1 : 0;
+foreach ($feedback as $question => &$answer) {
+    if ($answer['answer'] === $answer['choice']) {
+        $score++;
+    }
 }
+$feedbacks = [
+    "0 correct: Seems like your anime knowledge has been Titan-ed down. Time for a binge-watch!",
+    "1 correct: Not bad! But you're still a genin in the anime world. Keep training!",
+    "2 correct: You're getting there! Just a few more episodes and you'll be a pro.",
+    "3 correct: Great job! Your anime knowledge is leveling up!",
+    "4 correct: Excellent work! You're one step away from being an anime sensei!",
+    "5 correct: Perfect score! You've gone Plus Ultra in anime mastery!"
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,16 +35,23 @@ foreach ($correct as $ans) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
     <h1>Results: </h1>
+    <?php foreach ($feedback as $question => &$answer) : ?>
+        <p class="Question"> Question : <?= $question + 1 . " $questions[$question]" ?> </p>
+        <span class=" <?= ($answer['answer'] === $answer['choice']) ? 'correct' : 'incorrect' ?>"> Your Answer: <?= $answer['choice'] ?> </span>
+        <span class="correct"> Correct Answer: <?= $answer['answer'] ?></span>
+    <?php endforeach; ?>
     <p>Score: <?= $score ?></p>
     <p>Correct Answers: <?= $score ?></p>
-    <p>Incorrect Answers: <?= count($correct) - $score ?></p>
-    <p>Percentage: <?= ($score / count($correct)) * 100 ?>%</p>
+    <p>Incorrect Answers: <?= count($feedback) - $score ?></p>
+    <p>Percentage: <?= ($score / count($feedback)) * 100 ?>%</p>
+    <p>Feedback: <?= $feedbacks[$score] ?></p>
     <form method="get">
-        <button type="submit" name="submit">Try Again</button>
+        <button type="submit" name="submit">Try Again ?</button>
     </form>
 </body>
 
