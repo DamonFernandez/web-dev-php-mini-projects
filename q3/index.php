@@ -19,19 +19,8 @@ function playGame($userChoice, $computerChoice)
         return 2;
     }
 }
-session_start();
-$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
-$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
-$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
 
-$currentGame =  $_SESSION['currentGame'];
-$numberWins = $_SESSION['numberWins'];
-$numberLosses = $_SESSION['numberLosses'];
-$feedback = "";
-if (isset($_POST['userChoice']) && $numberLosses < 10) {
-    $userSelection = $_POST['userChoice'] ?? null;
-    $computerSelection =  random_int(0, 4);
-    $winner = playGame($userSelection, $computerSelection);
+function updateWinStatus($winner){
     if ($winner == 1) {
         $numberWins++;
         $feedback = $CHOICES[$userSelection] . " beats " . $CHOICES[$computerSelection] . " You win!";
@@ -41,11 +30,33 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     } else {
         $feedback = "Both selected " . $CHOICES[$userSelection] . " It's a tie!";
     }
+    $_SESSION['feedback'] = $feedback;
+
+}
+
+// Session start and var declaration 
+session_start();
+$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
+$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
+$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
+
+$currentGame =  $_SESSION['currentGame'];
+$numberWins = $_SESSION['numberWins'];
+$numberLosses = $_SESSION['numberLosses'];
+$feedback = "";
+
+
+
+if (isset($_POST['userChoice']) && $numberLosses < 10) {
+    $userSelection = $_POST['userChoice'] ?? null;
+    $computerSelection =  random_int(0, 4);
+    $winner = playGame($userSelection, $computerSelection);
+    updateWinStatus($winner);
+
     $currentGame++;
     $_SESSION['currentGame'] = $currentGame;
     $_SESSION['numberWins'] = $numberWins;
     $_SESSION['numberLosses'] = $numberLosses;
-    $_SESSION['feedback'] = $feedback;
 } else if ($numberLosses >= 10) {
     header("Location: gameover.php");
 }
