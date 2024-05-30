@@ -18,8 +18,6 @@ $current_question = $_SESSION["current_question"];
 $feedback = $_SESSION["feedback"];
 $choice = $_POST["choice"] ?? null;
 $errors = [];
-var_dump($errors);
-var_dump(($_POST));
 if (isset($_POST["submit"])) {
     if (is_null($choice)) {
         $errors['choice'] = true;
