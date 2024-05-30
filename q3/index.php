@@ -1,14 +1,39 @@
 <?php
+
+$CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
+$POSSIBLE_OUTCOMES = [
+    "0" => "It's a tie",
+    "1" => "You win",
+    "2" => "You lose"
+];
+function playGame($u, $c)
+{
+    global $CHOICES;
+    $rules = [
+        0 => [count($CHOICES) - 1, count($CHOICES) - 2],
+        1 => [0, count($CHOICES) - 1],
+        2 => [1, 0],
+        3 => [2, 1],
+        4 => [3, 2]
+    ];
+
+    if ($u == $c) {
+        return 0; // It's a tie
+    } elseif (in_array($c, $rules[$u])) {
+        return 1; // User wins
+    } else {
+        return 2; // Computer wins
+    }
+}
+
 $currentGame = 0;
 $numberWins = 0;
 $numberLosses = 0;
 $feedback = "";
-$CHOICES = ["ROCK", "PAPER", "SCISSORS", "LIZARD", "SPOCK"];
-
 if (isset($_POST['userChoice'])) {
     $userSelection = $_POST['userChoice'] ?? null;
-    $userChoice = $CHOICES[$userSelection];
-    $compChoice = $CHOICES[random_int(0, 4)];
+    $computerSelection =  random_int(0, 4);
+    $winner = playGame($userSelection, $computerSelection);
 }
 ?>
 
@@ -37,8 +62,9 @@ if (isset($_POST['userChoice'])) {
     </form>
 
     <?php if (isset($_POST['userChoice'])) : ?>
-        <p>You Selected: <?= $userChoice ?></p>
-        <p>The Computer Selected: <?= $compChoice ?></p>
+        <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
+        <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
+        <p><?= $POSSIBLE_OUTCOMES[$winner] ?></p>
     <?php endif; ?>
 </body>
 
