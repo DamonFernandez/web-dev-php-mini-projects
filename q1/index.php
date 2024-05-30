@@ -104,8 +104,20 @@ function sortFileStringsDescAlphabetical($fileContent)
 }
 }
 // The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
-function printMiddleThirdCharacter($fileContent)
+function printMiddleThirdCharacters($fileContent)
 {
+    $lineCounter = 1;
+
+    foreach ($fileContent as $currentLine) {
+        $currentLineLength = strlen($currentLine);
+        $startingPoint =  intval($currentLineLength / 3);
+        $endPoint = intval(2 * $currentLineLength / 3);
+        $portionToSliceTo = $endPoint - $startingPoint;
+        $slicedString = substr($currentLine, $startingPoint, $portionToSliceTo);
+
+        echo "Line $lineCounter: $slicedString <br>";
+        $lineCounter++;
+    }
 }
 
 
@@ -168,11 +180,15 @@ function printBaseFileContent($fileContent){
     <h2>Number of A's and a's per line</h2>
     <output> <?= countNumberOfACharacters($fileContent) ?></output>
 
-    <h2> Number of common punctuation  characters per line</h2>
+    <h2> Number of Common Punctuation Characters per line</h2>
     <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
 
     <h2> String in Descending Alphabetical Order</h2>
     <output> <?= sortFileStringsDescAlphabetical($fileContent)?></output>
+
+
+    <h2> Middle Third Characters of eaEach String</h2>
+    <output> <?= printMiddleThirdCharacters($fileContent)?></output>
 
 
 
