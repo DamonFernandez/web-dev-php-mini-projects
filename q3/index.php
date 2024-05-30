@@ -1,16 +1,6 @@
 <?php
 
-// Session start and global var declaration 
-session_start();
-$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
-$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
-$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
 
-$currentGame =  $_SESSION['currentGame'];
-$numberWins = $_SESSION['numberWins'];
-$numberLosses = $_SESSION['numberLosses'];
-$feedback = "";
-$CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
 
 function playGame($userChoice, $computerChoice)
 {
@@ -56,8 +46,18 @@ function updateSessionArray(){
     $_SESSION['numberLosses'] = $numberLosses;
 }
 
+// GLOBAL:
+// Session start and global var declaration 
+session_start();
+$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
+$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
+$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
 
-
+$currentGame =  $_SESSION['currentGame'];
+$numberWins = $_SESSION['numberWins'];
+$numberLosses = $_SESSION['numberLosses'];
+$feedback = "";
+$CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
 
 
 
