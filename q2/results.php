@@ -19,12 +19,12 @@ foreach ($feedback as $question => &$answer) {
     }
 }
 $feedbacks = [
-    "Looks like you need to brush up on your anime knowledge! Try watching 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass' again to catch all the details!",
-    "Not bad, but there's room for improvement! Maybe a rewatch of your favorite scenes from 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass' will help!",
-    "You're getting there! Your anime knowledge is solid, but a little more focus on the details in 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass' will make you an expert!",
-    "Great job! You really know your stuff when it comes to 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass'. Just a few more details to master!",
-    "Excellent work! You're a true anime fan with impressive knowledge of 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass'. Keep it up!",
-    "Perfect score! You're an anime master! Your knowledge of 'Attack on Titan', 'Jujutsu Kaisen', and 'Code Geass' is unbeatable!"
+    "0 correct: Seems like your anime knowledge has been Titan-ed down. Time for a binge-watch!",
+    "1 correct: Not bad! But you're still a genin in the anime world. Keep training!",
+    "2 correct: You're getting there! Just a few more episodes and you'll be a pro.",
+    "3 correct: Great job! Your anime knowledge is leveling up!",
+    "4 correct: Excellent work! You're one step away from being an anime sensei!",
+    "5 correct: Perfect score! You've gone Plus Ultra in anime mastery!"
 ];
 
 ?>

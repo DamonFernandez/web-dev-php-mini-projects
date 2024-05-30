@@ -43,46 +43,48 @@ class Question
 }
 
 
+
 $questionOne = new Question(
-    "In 'Attack on Titan', what is the name of the protagonist who vows to eliminate all Titans after witnessing the destruction of his hometown?",
-    "Eren Yeager",
-    "Mikasa Ackerman",
-    "Levi Ackerman",
-    "Armin Arlert",
+    "Which anime features a boy named Tanjiro Kamado who becomes a demon slayer after his family is slaughtered and his sister is turned into a demon?",
+    "Demon Slayer",
+    "Attack on Titan",
+    "Blue Exorcist",
+    "Naruto",
     0
 );
 $questionTwo = new Question(
-    "Who is the main character of 'Jujutsu Kaisen', a high school student with exceptional combat abilities and a strong sense of justice?",
-    "Gojo Satoru",
-    "Suguru Geto",
-    "Nanami Kento",
-    "Yuji Itadori",
-    3
+    "In which anime does a young alchemist named Edward Elric use alchemy in a quest to find the Philosopher's Stone to restore his and his brother's bodies?",
+    "Fullmetal Alchemist: Brotherhood",
+    "My Hero Academia",
+    "Sword Art Online",
+    "Black Clover",
+    0
 );
 $questionThree = new Question(
-    "What is the special power possessed by Lelouch Lamperouge, the main character of 'Code Geass'?",
-    "Super strength",
-    "Telekinesis",
-    "Mind control",
-    "Time manipulation",
-    2
+    "Which anime follows a group of pirates led by Monkey D. Luffy in their search for the ultimate treasure, the One Piece?",
+    "One Piece",
+    "Fairy Tail",
+    "Bleach",
+    "Hunter x Hunter",
+    0
 );
 $questionFour = new Question(
-    "Which military organization in 'Attack on Titan' is dedicated to fighting Titans and protecting humanity?",
-    "Garrison Regiment",
-    "Military Police Brigade",
-    "Survey Corps",
-    "Marleyan Military",
+    "In which anime does a boy named Gon Freecss become a Hunter to find his missing father and uncover the secrets of the Hunter Association?",
+    "Naruto",
+    "One Piece",
+    "Hunter x Hunter",
+    "Dragon Ball Z",
     2
 );
 $questionFive = new Question(
-    "In 'Jujutsu Kaisen', what is the name of the cursed object that Yuji Itadori swallows, resulting in him becoming the vessel of a powerful cursed spirit?",
-    "Sukuna's Finger",
-    "Inverted Spear of Heaven",
-    "Cursed Womb: Death Paintings",
-    "Cursed Corpse",
+    "Which anime is set in a world where 80% of the population has superpowers, and follows a boy named Izuku Midoriya who dreams of becoming the greatest hero?",
+    "My Hero Academia",
+    "One Punch Man",
+    "Blue Exorcist",
+    "Attack on Titan",
     0
 );
+
 
 
 $questions = [$questionOne, $questionTwo, $questionThree, $questionFour, $questionFive];
