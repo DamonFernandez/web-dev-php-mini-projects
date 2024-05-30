@@ -34,6 +34,13 @@ function updateWinStatus($winner){
 
 }
 
+
+function updateSessionArray(){
+    $_SESSION['currentGame'] = $currentGame;
+    $_SESSION['numberWins'] = $numberWins;
+    $_SESSION['numberLosses'] = $numberLosses;
+}
+
 // Session start and var declaration 
 session_start();
 $_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
@@ -54,9 +61,8 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     updateWinStatus($winner);
 
     $currentGame++;
-    $_SESSION['currentGame'] = $currentGame;
-    $_SESSION['numberWins'] = $numberWins;
-    $_SESSION['numberLosses'] = $numberLosses;
+
+    updateSessionArray();
 } else if ($numberLosses >= 10) {
     header("Location: gameover.php");
 }
