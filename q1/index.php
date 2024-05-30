@@ -1,18 +1,11 @@
 <?php
 
 
+$fileContent = [];
 
-
-$fileContent = getFileContentInArrayForm() ?? [];
-
-
-
-
-
-
-
+$errors = [];
 if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
-
+    $fileContent = getFileContentInArrayForm();
     $textBoxValue = $_POST["textBox"] ?? "";
 } else {
     $fileContent = [];
@@ -22,7 +15,8 @@ if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
 function getFileContentInArrayForm()
 {
     $file = $_FILES["filePicker"] ?? null;
-    if ($file !== null && isset($file['tmp_name'])) {
+    if ($file && $file['tmp_name']) {
+        $errors['file'] = true;
         $fileContentStringForm = file_get_contents($file['tmp_name']);
         $fileContentArrayForm = explode("\n", $fileContentStringForm);
         $fileContentArrayForm =  array_filter($fileContentArrayForm, function ($line) {
@@ -69,7 +63,7 @@ function countNumberOfCommonPunctuationChars($fileContent)
     foreach ($fileContent as $currentLine) {
         $numberOfCommonPunctuationCharacters = 0;
         $characters = str_split($currentLine);
-    
+
         foreach ($characters as $char) {
             $asciiValue = ord($char);
             if ($asciiValue >= 32 && $asciiValue <= 47) {
@@ -125,11 +119,12 @@ function filterStrings($fileContent)
 {
 }
 
-function printBaseFileContent($fileContent){
+function printBaseFileContent($fileContent)
+{
     $lineCounter = 1;
 
-    if(isset($fileContent)){
-        foreach($fileContent as $currentLine){
+    if (isset($fileContent)) {
+        foreach ($fileContent as $currentLine) {
             echo "Line $lineCounter: $currentLine <br>";
             $lineCounter++;
         }
@@ -163,35 +158,34 @@ function printBaseFileContent($fileContent){
         </fieldset>
 
         <button name="submitButton" type="submit">Submit</button>
+        <span class="error">
+            <?php
+            if (isset($errors['file'])) {
+                echo "Please select a file";
+            }
+            ?>
+        </span>
     </form>
 
 
-
-    <h2> Base File Content:</h2>
-    <output>
-        <?= printBaseFileContent($fileContent) ?>
-    </output>
-
-
-    <h2> Number of words per line </h2>
-    <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
+    <?php if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) : ?>
+        <h2> Base File Content:</h2>
+        <output>
+            <?= printBaseFileContent($fileContent) ?>
+        </output>
 
 
-    <h2>Number of A's and a's per line</h2>
-    <output> <?= countNumberOfACharacters($fileContent) ?></output>
+        <h2> Number of words per line </h2>
+        <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
+
+
+        <h2>Number of A's and a's per line</h2>
+        <output> <?= countNumberOfACharacters($fileContent) ?></output>
 
     <h2> Number of Common Punctuation Characters per line</h2>
     <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
 
-    <h2> String in Descending Alphabetical Order</h2>
-    <output> <?= sortFileStringsDescAlphabetical($fileContent)?></output>
-
-
-    <h2> Middle Third Characters of eaEach String</h2>
-    <output> <?= printMiddleThirdCharacters($fileContent)?></output>
-
-
-
+    <?php endif ?>
 </body>
 
 </html>
