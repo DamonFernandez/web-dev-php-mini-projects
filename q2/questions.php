@@ -57,44 +57,45 @@ class Question
 
 
 $questionOne = new Question(
-    "What is the capital of France?",
-    "Berlin",
-    "Madrid",
-    "Paris",
-    "Rome",
-    2
-);
-$questionTwo = new Question(
-    "HTML: For any decorative image that we use that is not meaningful what should we do in terms of the alt attribute for the element?",
-    "set the alt attribute to the number 404",
-    "We should use the alt attributes set to an empty string",
-    "We should not use any alt attribute",
-    "Set the alt attribute to \"descriptive\"",
-    1
-);
-$questionThree = new Question(
-    "What part of a computer handles logical operations?",
-    "ALU",
-    "FPU",
-    "CPU",
-    "The brain",
+    "In 'Attack on Titan', what is the name of the protagonist who vows to eliminate all Titans after witnessing the destruction of his hometown?",
+    "Eren Yeager",
+    "Mikasa Ackerman",
+    "Levi Ackerman",
+    "Armin Arlert",
     0
 );
+$questionTwo = new Question(
+    "Who is the main character of 'Jujutsu Kaisen', a high school student with exceptional combat abilities and a strong sense of justice?",
+    "Gojo Satoru",
+    "Suguru Geto",
+    "Nanami Kento",
+    "Yuji Itadori",
+    3
+);
+$questionThree = new Question(
+    "What is the special power possessed by Lelouch Lamperouge, the main character of 'Code Geass'?",
+    "Super strength",
+    "Telekinesis",
+    "Mind control",
+    "Time manipulation",
+    2
+);
 $questionFour = new Question(
-    "What is the capital of India?",
-    "Berlin",
-    "Madrid",
-    "New Delhi",
-    "Pakistan",
+    "Which military organization in 'Attack on Titan' is dedicated to fighting Titans and protecting humanity?",
+    "Garrison Regiment",
+    "Military Police Brigade",
+    "Survey Corps",
+    "Marleyan Military",
     2
 );
 $questionFive = new Question(
-    "JS: What is an IIFE function?",
-    "An function that we pass into another function",
-    "An private function",
-    "an function that returns nothing",
-    "A function that is executed immediately after being defined",
-    3
+    "In 'Jujutsu Kaisen', what is the name of the cursed object that Yuji Itadori swallows, resulting in him becoming the vessel of a powerful cursed spirit?",
+    "Sukuna's Finger",
+    "Inverted Spear of Heaven",
+    "Cursed Womb: Death Paintings",
+    "Cursed Corpse",
+    0
 );
+
 
 $questions = [$questionOne, $questionTwo, $questionThree, $questionFour, $questionFive];
