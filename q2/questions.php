@@ -1,10 +1,7 @@
 <?php
 class Question
 {
-    private $choiceOne;
-    private $choiceTwo;
-    private $choiceThree;
-    private $choiceFour;
+
     private $choices;
     private $correctAnswer;
     private $questionText;
@@ -25,30 +22,20 @@ class Question
         return $this->questionText;
     }
 
-    public function getChoiceOne()
+    public function getChoice($choice)
     {
-        return $this->choices[0];
-    }
-
-    public function getChoiceTwo()
-    {
-        return $this->choices[1];
-    }
-
-    public function getChoiceThree()
-    {
-        return $this->choices[2];
-    }
-
-    public function getChoiceFour()
-    {
-        return $this->choices[3];
+        return $this->choices[$choice];
     }
 
     public function getCorrectAnswer()
     {
         return $this->correctAnswer;
     }
+    public function getAnswerStr()
+    {
+        return $this->choices[$this->correctAnswer];
+    }
+
     public function __toString(): string
     {
         return $this->questionText;
