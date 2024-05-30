@@ -1,11 +1,5 @@
 <?php
-
 $CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
-$POSSIBLE_OUTCOMES = [
-    "0" => "It's a tie",
-    "1" => "You win",
-    "2" => "You lose"
-];
 function playGame($u, $c)
 {
     global $CHOICES;
@@ -18,23 +12,45 @@ function playGame($u, $c)
     ];
 
     if ($u == $c) {
-        return 0; // It's a tie
+        return 0;
     } elseif (in_array($c, $rules[$u])) {
-        return 1; // User wins
+        return 1;
     } else {
-        return 2; // Computer wins
+        return 2;
     }
 }
+session_start();
+$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
+$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
+$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
 
-$currentGame = 0;
-$numberWins = 0;
-$numberLosses = 0;
+$currentGame =  $_SESSION['currentGame'];
+$numberWins = $_SESSION['numberWins'];
+$numberLosses = $_SESSION['numberLosses'];
 $feedback = "";
-if (isset($_POST['userChoice'])) {
+if (isset($_POST['userChoice']) && $numberLosses < 10) {
     $userSelection = $_POST['userChoice'] ?? null;
     $computerSelection =  random_int(0, 4);
     $winner = playGame($userSelection, $computerSelection);
+    if ($winner == 1) {
+        $numberWins++;
+        $feedback = $CHOICES[$userSelection] . " beats " . $CHOICES[$computerSelection] . " You win!";
+    } elseif ($winner == 2) {
+        $feedback = $CHOICES[$computerSelection] . " beats " . $CHOICES[$userSelection] . " You lose!";
+        $numberLosses++;
+    } else {
+        $feedback = "Both selected " . $CHOICES[$userSelection] . " It's a tie!";
+    }
+    $currentGame++;
+    $_SESSION['currentGame'] = $currentGame;
+    $_SESSION['numberWins'] = $numberWins;
+    $_SESSION['numberLosses'] = $numberLosses;
+    $_SESSION['feedback'] = $feedback;
+} else if ($numberLosses >= 10) {
+    header("Location: gameover.php");
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +64,7 @@ if (isset($_POST['userChoice'])) {
 
 <body>
     <?php include_once "./includes/header.php" ?>
-    <h1>The Rock Paper Scissor Lizard Splock Game</h1>
+    <h1>The Rock Paper Scissor Lizard Spock Game</h1>
     <h3>Game Number: <?= $currentGame + 1 ?></h3>
     <span>Number of wins: <?= $numberWins ?> </span>
     <span>Number of losses: <?= $numberLosses ?></span>
@@ -64,7 +80,7 @@ if (isset($_POST['userChoice'])) {
     <?php if (isset($_POST['userChoice'])) : ?>
         <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
         <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
-        <p><?= $POSSIBLE_OUTCOMES[$winner] ?></p>
+        <p><?= $feedback ?></p>
     <?php endif; ?>
 </body>
 
