@@ -1,5 +1,17 @@
 <?php
+
+// Session start and global var declaration 
+session_start();
+$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
+$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
+$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
+
+$currentGame =  $_SESSION['currentGame'];
+$numberWins = $_SESSION['numberWins'];
+$numberLosses = $_SESSION['numberLosses'];
+$feedback = "";
 $CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
+
 function playGame($userChoice, $computerChoice)
 {
     global $CHOICES;
@@ -21,6 +33,8 @@ function playGame($userChoice, $computerChoice)
 }
 
 function updateWinStatus($winner){
+
+    global $CHOICES, $numberWins, $numberLosses, $feedback, $userSelection, $computerSelection;
     if ($winner == 1) {
         $numberWins++;
         $feedback = $CHOICES[$userSelection] . " beats " . $CHOICES[$computerSelection] . " You win!";
@@ -36,21 +50,14 @@ function updateWinStatus($winner){
 
 
 function updateSessionArray(){
+    global $currentGame, $numberWins, $numberLosses; 
     $_SESSION['currentGame'] = $currentGame;
     $_SESSION['numberWins'] = $numberWins;
     $_SESSION['numberLosses'] = $numberLosses;
 }
 
-// Session start and var declaration 
-session_start();
-$_SESSION['currentGame'] = $_SESSION['currentGame'] ?? 0;
-$_SESSION['numberWins'] = $_SESSION['numberWins'] ?? 0;
-$_SESSION['numberLosses'] = $_SESSION['numberLosses'] ?? 0;
 
-$currentGame =  $_SESSION['currentGame'];
-$numberWins = $_SESSION['numberWins'];
-$numberLosses = $_SESSION['numberLosses'];
-$feedback = "";
+
 
 
 
@@ -59,9 +66,7 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     $computerSelection =  random_int(0, 4);
     $winner = playGame($userSelection, $computerSelection);
     updateWinStatus($winner);
-
     $currentGame++;
-
     updateSessionArray();
 } else if ($numberLosses >= 10) {
     header("Location: gameover.php");
