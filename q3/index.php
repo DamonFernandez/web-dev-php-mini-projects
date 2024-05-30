@@ -1,6 +1,6 @@
 <?php
 $CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
-function playGame($u, $c)
+function playGame($userChoice, $computerChoice)
 {
     global $CHOICES;
     $rules = [
@@ -11,9 +11,9 @@ function playGame($u, $c)
         4 => [3, 2]
     ];
 
-    if ($u == $c) {
+    if ($userChoice == $computerChoice) {
         return 0;
-    } elseif (in_array($c, $rules[$u])) {
+    } elseif (in_array($computerChoice, $rules[$userChoice])) {
         return 1;
     } else {
         return 2;
