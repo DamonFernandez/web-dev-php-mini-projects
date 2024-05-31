@@ -1,12 +1,25 @@
 <?php
-
-include "./includes/library.php";
-
 session_start();
+
+
+
+
+
+
+
+
 if (isset($_POST['submit'])) {
+    include "./includes/library.php";
+    $pdo = connectdb(); 
+
+    $preparedQuery = $pdo -> prepare(
+    "INSERT INTO rock_paper_spock_scores 
+     VALUES (?, ?)");
+
+
     $name = $_POST['name'];
     $score = $_SESSION['numberWins'];
-    //do database stuff
+    $preparedQuery -> execute([$name, $score]);
     header('location: highscores.php');
 }
 ?>
