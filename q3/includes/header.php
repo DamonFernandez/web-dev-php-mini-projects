@@ -4,8 +4,11 @@ if (isset($_GET['restart']) || isset($_POST['restart'])) {
     $_SESSION['currentGame'] = 0;
     $_SESSION['numberWins'] =  0;
     $_SESSION['numberLosses'] = 0;
-    $_SESSION['feedback'] = "";
     header("Location: index.php");
+    exit();
+}
+if (isset($_GET["highscore"])) {
+    header("Location: highscore.php");
     exit();
 }
 ?>

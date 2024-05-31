@@ -65,6 +65,7 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
 <body>
     <?php include_once "./includes/header.php" ?>
     <h1>The Rock Paper Scissor Lizard Spock Game</h1>
+    <p>Rules: <iframe width="560" height="315" src="https://www.youtube.com/embed/pIpmITBocfM?si=YZQzqyGqSjz6QtYq&amp;controls=0?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
     <h3>Game Number: <?= $currentGame + 1 ?></h3>
     <span>Number of wins: <?= $numberWins ?> </span>
     <span>Number of losses: <?= $numberLosses ?></span>
