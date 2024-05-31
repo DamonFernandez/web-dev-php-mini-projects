@@ -1,14 +1,5 @@
 <?php
-session_start();
-
-
-
-
-
-
-
-
-if (isset($_POST['submit'])) {
+function addScoresToDB(){
     include "./includes/library.php";
     $pdo = connectdb(); 
 
@@ -20,6 +11,12 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $score = $_SESSION['numberWins'];
     $preparedQuery -> execute([$name, $score]);
+}
+
+session_start();
+
+if (isset($_POST['submit'])) {
+    addScoresToDB();
     header('location: highscores.php');
 }
 ?>
