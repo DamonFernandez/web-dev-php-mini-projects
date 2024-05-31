@@ -5,11 +5,13 @@ $fileContent = [];
 
 $errors = [];
 if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
+
     $fileContent = getFileContentInArrayForm();
-    $textBoxValue = $_POST["textBox"] ?? "";
 } else {
     $fileContent = [];
 }
+
+
 
 
 function getFileContentInArrayForm()
@@ -116,7 +118,33 @@ function printMiddleThirdCharacters($fileContent)
 
 
 function filterStrings($fileContent)
-{
+{   
+
+    if(isset($_POST["textBox"]) && trim($_POST["textBox"]) != ""){
+        $searchTerm = $_POST["textBox"];
+
+        $stringsToPrint = [];
+        $numOfStringsToNotPrint = 0;
+        $lineCounter = 0;
+
+
+
+    foreach ($fileContent as $currentLine) {
+        if(str_contains($currentLine, $searchTerm)){
+            $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\"> $searchTerm </span>", $currentLine);
+            echo "Line $lineCounter: $currentLine <br>";
+        }
+        else{
+            $numOfStringsToNotPrint++;
+        }
+        $lineCounter++;
+
+    }
+
+    echo "Number of Strings omitted due to missing search term: $numOfStringsToNotPrint";
+    }
+
+
 }
 
 function printBaseFileContent($fileContent)
@@ -142,6 +170,7 @@ function printBaseFileContent($fileContent)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment One - Question One</title>
+    <link rel="stylesheet" href="q1.css">
 </head>
 
 <body>
@@ -184,6 +213,9 @@ function printBaseFileContent($fileContent)
 
     <h2> Number of Common Punctuation Characters per line</h2>
     <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
+
+    <h2> Searching section </h2>
+    <output> <?= filterStrings($fileContent)?></output>
 
     <?php endif ?>
 </body>
