@@ -88,7 +88,7 @@ function sortFileStringsDescAlphabetical($fileContent)
 
     foreach ($fileContent as $currentLine) {
         $modifiedCurrentLine = explode(" ", $currentLine);
-        natcasesort($modifiedCurrentLine); 
+        natcasesort($modifiedCurrentLine);
         $modifiedCurrentLine = array_reverse($modifiedCurrentLine);
         var_dump($modifiedCurrentLine);
         $modifiedCurrentLine = implode(" ", $modifiedCurrentLine);
@@ -97,7 +97,7 @@ function sortFileStringsDescAlphabetical($fileContent)
         echo "Line $lineCounter: $modifiedCurrentLine <br>";
 
         $lineCounter++;
-}
+    }
 }
 // The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
 function printMiddleThirdCharacters($fileContent)
@@ -118,9 +118,9 @@ function printMiddleThirdCharacters($fileContent)
 
 
 function filterStrings($fileContent)
-{   
+{
 
-    if(isset($_POST["textBox"]) && trim($_POST["textBox"]) != ""){
+    if (isset($_POST["textBox"]) && trim($_POST["textBox"]) != "") {
         $searchTerm = $_POST["textBox"];
 
         $stringsToPrint = [];
@@ -129,22 +129,18 @@ function filterStrings($fileContent)
 
 
 
-    foreach ($fileContent as $currentLine) {
-        if(str_contains($currentLine, $searchTerm)){
-            $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\"> $searchTerm </span>", $currentLine);
-            echo "Line $lineCounter: $currentLine <br>";
+        foreach ($fileContent as $currentLine) {
+            if (str_contains($currentLine, $searchTerm)) {
+                $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\"> $searchTerm </span>", $currentLine);
+                echo "Line $lineCounter: $currentLine <br>";
+            } else {
+                $numOfStringsToNotPrint++;
+            }
+            $lineCounter++;
         }
-        else{
-            $numOfStringsToNotPrint++;
-        }
-        $lineCounter++;
 
+        echo "Number of Strings omitted due to missing search term: $numOfStringsToNotPrint";
     }
-
-    echo "Number of Strings omitted due to missing search term: $numOfStringsToNotPrint";
-    }
-
-
 }
 
 function printBaseFileContent($fileContent)
@@ -170,7 +166,7 @@ function printBaseFileContent($fileContent)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment One - Question One</title>
-    <link rel="stylesheet" href="q1.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
@@ -211,11 +207,14 @@ function printBaseFileContent($fileContent)
         <h2>Number of A's and a's per line</h2>
         <output> <?= countNumberOfACharacters($fileContent) ?></output>
 
-    <h2> Number of Common Punctuation Characters per line</h2>
-    <output> <?= countNumberOfCommonPunctuationChars($fileContent)?></output>
 
-    <h2> Searching section </h2>
-    <output> <?= filterStrings($fileContent)?></output>
+        <h2>Number of Middle Third Characters per line</h2>
+        <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
+        <h2> Number of Common Punctuation Characters per line</h2>
+        <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
+
+        <h2> Searching section </h2>
+        <output> <?= filterStrings($fileContent) ?></output>
 
     <?php endif ?>
 </body>

@@ -1,19 +1,20 @@
 <?php
 
-function renderScores($setOfScores){
-    foreach($setOfScores as $currRow){
+function renderScores($setOfScores)
+{
+    foreach ($setOfScores as $currRow) {
         echo "<li> {$currRow['Name']} - Score: {$currRow['Score']} </li>";
     }
-
 }
 
 include "./includes/library.php";
-$pdo = connectdb(); 
-$query = $pdo -> query(
-"SELECT * FROM rock_paper_spock_scores ORDER BY score LIMIT 20");
+$pdo = connectdb();
+$query = $pdo->query(
+    "SELECT * FROM rock_paper_spock_scores ORDER BY score DESC LIMIT 20 ;"
+);
 
-$queryResults = $query -> fetchAll();
-var_dump($queryResults);    
+$queryResults = $query->fetchAll();
+var_dump($queryResults);
 
 
 ?>
