@@ -209,14 +209,16 @@ function printBaseFileContent($fileContent)
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
 
-            <section>
-                <h2>Number of Middle Third Characters per line</h2>
-                <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
-            </section>
+ 
 
             <section>
                 <h2>Number of Common Punctuation Characters per line</h2>
                 <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
+            </section>
+
+            <section>
+                <h2> Middle Third Characters per line</h2>
+                <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
             </section>
 
             <section>
