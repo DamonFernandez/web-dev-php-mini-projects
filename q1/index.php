@@ -171,52 +171,61 @@ function printBaseFileContent($fileContent)
 
 <body>
     <h1>Assignment One - Question One</h1>
-    <form method="post" enctype="multipart/form-data">
-        <fieldset>
-            <label for="textBox">Search:</label>
-            <input name="textBox" id="textBox" type="text">
-        </fieldset>
+    <main>
+        <form method="post" enctype="multipart/form-data">
+            <fieldset>
+                <label for="textBox">Search</label>
+                <input name="textBox" id="textBox" type="text">
+            </fieldset>
+            <fieldset>
+                <label for="filePicker">File Picker</label>
+                <input name="filePicker" id="filePicker" type="file">
+            </fieldset>
+            <button name="submitButton" type="submit">Submit</button>
+            <span class="error">
+                <?php
+                if (isset($errors['file'])) {
+                    echo "Please select a file";
+                }
+                ?>
+            </span>
+        </form>
 
-        <fieldset>
-            <label for="filePicker">File Picker:</label>
-            <input name="filePicker" id="filePicker" type="file">
-        </fieldset>
+        <?php if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) : ?>
+            <section>
+                <h2>Base File Content</h2>
+                <output>
+                    <?= printBaseFileContent($fileContent) ?>
+                </output>
+            </section>
 
-        <button name="submitButton" type="submit">Submit</button>
-        <span class="error">
-            <?php
-            if (isset($errors['file'])) {
-                echo "Please select a file";
-            }
-            ?>
-        </span>
-    </form>
+            <section>
+                <h2>Number of words per line</h2>
+                <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
+            </section>
 
+            <section>
+                <h2>Number of A's and a's per line</h2>
+                <output> <?= countNumberOfACharacters($fileContent) ?></output>
+            </section>
 
-    <?php if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) : ?>
-        <h2> Base File Content:</h2>
-        <output>
-            <?= printBaseFileContent($fileContent) ?>
-        </output>
+            <section>
+                <h2>Number of Middle Third Characters per line</h2>
+                <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
+            </section>
 
+            <section>
+                <h2>Number of Common Punctuation Characters per line</h2>
+                <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
+            </section>
 
-        <h2> Number of words per line </h2>
-        <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
-
-
-        <h2>Number of A's and a's per line</h2>
-        <output> <?= countNumberOfACharacters($fileContent) ?></output>
-
-
-        <h2>Number of Middle Third Characters per line</h2>
-        <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
-        <h2> Number of Common Punctuation Characters per line</h2>
-        <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
-
-        <h2> Searching section </h2>
-        <output> <?= filterStrings($fileContent) ?></output>
-
-    <?php endif ?>
+            <section>
+                <h2>Searching section</h2>
+                <output> <?= filterStrings($fileContent) ?></output>
+            </section>
+        <?php endif ?>
+    </main>
 </body>
+
 
 </html>
