@@ -139,7 +139,7 @@ function filterStrings($fileContent)
             $lineCounter++;
         }
 
-        echo "Number of Strings omitted due to missing search term: $numOfStringsToNotPrint";
+        echo "Number of Strings omitted due to them missing search term: $numOfStringsToNotPrint";
     }
 }
 
