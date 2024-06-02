@@ -209,7 +209,7 @@ function printBaseFileContent($fileContent)
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
 
-
+ 
 
             <section>
                 <h2>Number of Common Punctuation Characters per line</h2>
