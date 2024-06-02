@@ -22,7 +22,8 @@ function playGame($userChoice, $computerChoice)
     }
 }
 
-function updateWinStatus($winner){
+function updateWinStatus($winner)
+{
 
     global $CHOICES, $numberWins, $numberLosses, $feedback, $userSelection, $computerSelection;
     if ($winner == 1) {
@@ -35,12 +36,12 @@ function updateWinStatus($winner){
         $feedback = "Both selected " . $CHOICES[$userSelection] . " It's a tie!";
     }
     $_SESSION['feedback'] = $feedback;
-
 }
 
 
-function updateSessionArray(){
-    global $currentGame, $numberWins, $numberLosses; 
+function updateSessionArray()
+{
+    global $currentGame, $numberWins, $numberLosses;
     $_SESSION['currentGame'] = $currentGame;
     $_SESSION['numberWins'] = $numberWins;
     $_SESSION['numberLosses'] = $numberLosses;
