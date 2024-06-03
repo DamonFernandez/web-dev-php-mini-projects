@@ -38,7 +38,10 @@ function updateWinStatus($winner)
     $_SESSION['feedback'] = $feedback;
 }
 
-
+function showRules()
+{
+    echo "<p>Rules <iframe width='560' height='315' src='//www.youtube.com/embed/pIpmITBocfM?si=YZQzqyGqSjz6QtYq&amp;cc_load_policy=1;controls=0?autoplay=1&mute=1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy'strict-origin-when-cross-origin' allowfullscreen></iframe></p>";
+}
 function updateSessionArray()
 {
     global $currentGame, $numberWins, $numberLosses;
@@ -59,7 +62,6 @@ $numberWins = $_SESSION['numberWins'];
 $numberLosses = $_SESSION['numberLosses'];
 $feedback = "";
 $CHOICES = ["ROCK", "SPOCK", "PAPER", "LIZARD", "SCISSORS"];
-
 
 
 if (isset($_POST['userChoice']) && $numberLosses < 10) {
@@ -83,29 +85,34 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPSLS:GAME</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
     <?php include_once "./includes/header.php" ?>
     <h1>The Rock Paper Scissor Lizard Spock Game</h1>
-    <p>Rules: <iframe width="560" height="315" src="https://www.youtube.com/embed/pIpmITBocfM?si=YZQzqyGqSjz6QtYq&amp;controls=0?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-    <h3>Game Number: <?= $currentGame + 1 ?></h3>
-    <span>Number of wins: <?= $numberWins ?> </span>
-    <span>Number of losses: <?= $numberLosses ?></span>
-    <span>Play your turn: </span>
-    <form method="post">
-        <button type="submit" name="userChoice" id="0" value="0"> <?= $CHOICES[0] ?> </button>
-        <button type="submit" name="userChoice" id="1" value="1"> <?= $CHOICES[1] ?> </button>
-        <button type="submit" name="userChoice" id="2" value="2"> <?= $CHOICES[2] ?> </button>
-        <button type="submit" name="userChoice" id="3" value="3"> <?= $CHOICES[3] ?> </button>
-        <button type="submit" name="userChoice" id="4" value="4"> <?= $CHOICES[4] ?> </button>
-    </form>
-
-    <?php if (isset($_POST['userChoice'])) : ?>
-        <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
-        <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
-        <p><?= $feedback ?></p>
+    <?php if ($currentGame == 0) : ?>
+        <?= showRules(); ?>
     <?php endif; ?>
+    <div class="game">
+        <h3>Game Number: <?= $currentGame + 1 ?></h3>
+        <span>Number of wins: <?= $numberWins ?> Number of losses: <?= $numberLosses ?> </span>
+
+        <form method="post">
+            <span>Play your turn: </span>
+            <button type="submit" name="userChoice" id="0" value="0"> <?= $CHOICES[0] ?> </button>
+            <button type="submit" name="userChoice" id="1" value="1"> <?= $CHOICES[1] ?> </button>
+            <button type="submit" name="userChoice" id="2" value="2"> <?= $CHOICES[2] ?> </button>
+            <button type="submit" name="userChoice" id="3" value="3"> <?= $CHOICES[3] ?> </button>
+            <button type="submit" name="userChoice" id="4" value="4"> <?= $CHOICES[4] ?> </button>
+        </form>
+
+        <?php if (isset($_POST['userChoice'])) : ?>
+            <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
+            <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
+            <p><?= $feedback ?></p>
+        <?php endif; ?>
+    </div>
 </body>
 
 </html>

@@ -15,8 +15,8 @@ if (isset($_GET["highscore"])) {
 <header>
     <nav>
         <form method="get">
-            <button type="sumit" name="restart" id="restart">Restart Game</button>
             <button type="button" name="highscore" id="highscore">High Scores</button>
+            <button type="sumit" name="restart" id="restart">Restart Game</button>
         </form>
     </nav>
 </header>
