@@ -21,15 +21,21 @@ body {
   align-items: center;
 }
 
-section {
+section,
+form,
+fieldset {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-style: solid;
-  border-width: 2em;
+  border-width: 0.2em;
   border-radius: 2em;
   border-color: var(--smoky-black);
+}
+
+section {
+  border-width: 2em;
   background-color: var(--dun);
   padding: 2em;
 }
@@ -41,9 +47,6 @@ main {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin-top: 1em;
   padding: 2em;
   background-color: var(--smoky-black);
@@ -60,24 +63,16 @@ fieldset {
 
 fieldset {
   padding: 1em;
-  border-style: solid;
-  border-width: 0.2em;
-  border-radius: 2em;
   border-color: var(--antiflash-white);
   background-color: var(--dun);
   margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 button {
   padding: 0.5em;
-  border-radius: 1em;
+  border-radius: 2em;
   border-style: solid;
   border-width: 0.2em;
-  border-radius: 2em;
   border-color: var(--antiflash-white);
   background-color: var(--jet);
   color: var(--antiflash-white);
@@ -92,6 +87,25 @@ button:hover {
   background-color: #a7a3d0;
 }
 
+input[type="file"] {
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 1em;
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: var(--antiflash-white);
+  background-color: var(--dun);
+  font-weight: bold;
+  color: var(--jet);
+  text-align: center;
+}
+
+input::file-selector-button {
+  box-shadow: none;
+  background-color: var(--smoky-black);
+  color: var(--antiflash-white);
+  border-radius: 1em;
+}
 
 input[type="file"] {
   margin: 0.5em;
