@@ -244,23 +244,21 @@ function printBaseFileContent($fileContent)
                 <h2>Number of A's and a's Per Line</h2>
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
+            <section>
+                <h2>Number of Common Punctuation Characters Per Line</h2>
+                <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
+            </section>
 
-            <<<<<<< HEAD=======>>>>>>> ad735cff93d174be7731eaf8bcecc1d353acbd40
-                <section>
-                    <h2>Number of Common Punctuation Characters Per Line</h2>
-                    <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
-                </section>
+            <section>
+                <h2>Middle Third Characters Per Line</h2>
+                <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
+            </section>
 
-                <section>
-                    <h2>Middle Third Characters Per Line</h2>
-                    <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
-                </section>
-
-                <section>
-                    <h2>Searching Section</h2>
-                    <output> <?= filterStrings($fileContent) ?></output>
-                </section>
-            <?php endif ?>
+            <section>
+                <h2>Searching Section</h2>
+                <output> <?= filterStrings($fileContent) ?></output>
+            </section>
+        <?php endif ?>
     </main>
 </body>
 
