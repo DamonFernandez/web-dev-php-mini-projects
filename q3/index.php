@@ -101,6 +101,7 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     updateSessionArray(); // Update the session array
 } else if ($numberLosses >= 10) {  // Check if the number of losses is greater than or equal to 10
     header("Location: gameover.php"); // Redirect to the game over page
+    exit();
 }
 
 ?>

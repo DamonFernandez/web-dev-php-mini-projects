@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
         $errors['name'] = true;
     } else {
         addScoresToDB(); // Add the player's score to the database
+        session_destroy(); // Destroy the session
         header('location: highscores.php'); // Redirect to the highscores page
     }
 }
