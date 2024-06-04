@@ -42,10 +42,22 @@ $queryResults = $query->fetchAll();
     <?php include_once "./includes/header.php" ?>
 
     <h1>High Scores</h1>
-    <ol>
-        <!-- Render the scores as an ordered list -->
-        <?= renderScores($queryResults) ?>
-    </ol>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($queryResults as $row) : ?>
+                <tr>
+                    <td><?= $row['Name'] ?></td>
+                    <td><?= $row['Score'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

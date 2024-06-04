@@ -123,8 +123,9 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
     <?php endif; ?>
     <div class="game">
         <h3>Game Number: <?= $currentGame + 1 ?></h3>
-        <span>Number of wins: <?= $numberWins ?> Number of losses: <?= $numberLosses ?> </span>
-
+        <div class="labels">
+            <span class="green">Number of wins: <?= $numberWins ?> </span><span class="red"> Number of losses: <?= $numberLosses ?></span>
+        </div>
         <form method="post">
             <span>Play your turn: </span>
             <button type="submit" name="userChoice" id="0" value="0"> <?= $CHOICES[0] ?> </button>
@@ -135,10 +136,13 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
         </form>
 
         <?php if (isset($_POST['userChoice'])) : ?> <!-- Check if the user has made a choice -->
-            <p>Results of game: <?= $currentGame ?></p> <!-- Display the results of the game -->
-            <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
-            <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
-            <p><?= $feedback ?></p>
+            <div class="feedback">
+                <p>Results of game: <?= $currentGame ?></p> <!-- Display the results of the game -->
+                <p>You Selected: <span class="selection"><?= $CHOICES[$userSelection] ?></span></p>
+                <p>The Computer Selected: <span class="selection"><?= $CHOICES[$computerSelection] ?></span></p>
+                <p><?= $feedback ?></p>
+            </div>
+
         <?php endif; ?>
     </div>
 </body>
