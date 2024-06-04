@@ -1,161 +1,192 @@
 <?php
 
-
+// Initialize an empty array to hold file content
 $fileContent = [];
 
+// Initialize an array to hold errors
 $errors = [];
-if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
 
-    $fileContent = getFileContentInArrayForm();
+// Check if the form was submitted and a file was uploaded
+if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
+    $fileContent = getFileContentInArrayForm(); // Get the file content as an array
 } else {
-    $fileContent = [];
+    $fileContent = []; // Set file content to an empty array if not submitted
 }
 
-
-
-
+/**
+ * Function to get the content of the uploaded file in array form
+ * This function reads the uploaded file and converts its content into an array of lines.
+ */
 function getFileContentInArrayForm()
 {
+    // Get the uploaded file from the global $_FILES array
     $file = $_FILES["filePicker"] ?? null;
+
+    // Check if the file is valid and has been uploaded
     if ($file && $file['tmp_name']) {
-        $errors['file'] = true;
-        $fileContentStringForm = file_get_contents($file['tmp_name']);
-        $fileContentArrayForm = explode("\n", $fileContentStringForm);
-        $fileContentArrayForm =  array_filter($fileContentArrayForm, function ($line) {
+        global $errors; // Use the global $errors array to record errors
+        $errors['file'] = true; // Set an error if no file is uploaded
+        $fileContentStringForm = file_get_contents($file['tmp_name']); // Get file content as a string
+        $fileContentArrayForm = explode("\n", $fileContentStringForm); // Split the content into lines
+        // Remove empty lines from the array
+        $fileContentArrayForm = array_filter($fileContentArrayForm, function ($line) {
             return trim($line) !== "";
         });
-        return $fileContentArrayForm;
+        return $fileContentArrayForm; // Return the file content as an array
     }
-    return []; // Return an empty array if the file isn't set or theres no tmp_name
+    return []; // Return an empty array if the file isn't set or there's no tmp_name
 }
 
+/**
+ * Function to count the number of words per line
+ * This function iterates over each line in the file content array and counts the words in each line.
+ */
 function countNumberOfWordsPerLine($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
     foreach ($fileContent as $currentLine) {
+        // Count words in the current line by splitting it by spaces and counting the resulting elements
         $amountOfWordsInCurrentLine = count(explode(" ", $currentLine));
         echo "Amount of words in line $lineCounter: $amountOfWordsInCurrentLine<br>";
-        $lineCounter++;
+        $lineCounter++; // Increment line counter
     }
 }
 
+/**
+ * Function to count the number of 'a' and 'A' characters per line
+ * This function iterates over each line in the file content array and counts the occurrences of 'a' and 'A'.
+ */
 function countNumberOfACharacters($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
 
     foreach ($fileContent as $currentLine) {
-        $numberOfACharactersCounter = 0;
+        $numberOfACharactersCounter = 0; // Initialize counter for 'a' and 'A' characters
 
+        // Count 'a' characters in the current line
         $numberOfACharactersCounter += substr_count($currentLine, "a");
+        // Count 'A' characters in the current line
         $numberOfACharactersCounter += substr_count($currentLine, "A");
 
         echo "Amount of a's and A's in line $lineCounter: $numberOfACharactersCounter<br>";
 
-        $lineCounter++;
+        $lineCounter++; // Increment line counter
     }
 }
 
-
-// for simplicity, we'll consider them to be characters with an ascii value between 32-47) You could certainly accomplish this with regular expressions, but it can also be done fairy easily with basic php functions.
-// Counts spaces
+/**
+ * Function to count common punctuation characters (ASCII values 32-47) per line
+ * This function iterates over each line in the file content array and counts common punctuation characters.
+ */
 function countNumberOfCommonPunctuationChars($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
 
     foreach ($fileContent as $currentLine) {
-        $numberOfCommonPunctuationCharacters = 0;
-        $characters = str_split($currentLine);
+        $numberOfCommonPunctuationCharacters = 0; // Initialize counter for common punctuation characters
+        $characters = str_split($currentLine); // Split the line into individual characters
 
         foreach ($characters as $char) {
-            $asciiValue = ord($char);
+            $asciiValue = ord($char); // Get ASCII value of the character
+            // Check if the character is a common punctuation character (ASCII values 32-47)
             if ($asciiValue >= 32 && $asciiValue <= 47) {
-                $numberOfCommonPunctuationCharacters++;
+                $numberOfCommonPunctuationCharacters++; // Count common punctuation characters
             }
         }
 
-
         echo "Amount of common punctuation in line $lineCounter: $numberOfCommonPunctuationCharacters<br>";
 
-        $lineCounter++;
+        $lineCounter++; // Increment line counter
     }
 }
 
-
-// irrespective of case).
+/**
+ * Function to sort strings in descending alphabetical order irrespective of case
+ * This function sorts each line of the file content array in descending alphabetical order.
+ */
 function sortFileStringsDescAlphabetical($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
 
     foreach ($fileContent as $currentLine) {
-        $modifiedCurrentLine = explode(" ", $currentLine);
-        natcasesort($modifiedCurrentLine);
-        $modifiedCurrentLine = array_reverse($modifiedCurrentLine);
-        var_dump($modifiedCurrentLine);
-        $modifiedCurrentLine = implode(" ", $modifiedCurrentLine);
-
+        $modifiedCurrentLine = explode(" ", $currentLine); // Split line into words
+        natcasesort($modifiedCurrentLine); // Sort words case-insensitively
+        $modifiedCurrentLine = array_reverse($modifiedCurrentLine); // Reverse the order to get descending order
+        var_dump($modifiedCurrentLine); // Output the sorted line for debugging purposes
+        $modifiedCurrentLine = implode(" ", $modifiedCurrentLine); // Join words back into a line
 
         echo "Line $lineCounter: $modifiedCurrentLine <br>";
 
-        $lineCounter++;
+        $lineCounter++; // Increment line counter
     }
 }
-// The middle-third characters of the string, if the string isn't evenly divisible by three, you should take the lower value. Example: if the string is 15 characters long, you would output characters 6-10, if it's 16 or 17 characters, you would still output character 6-10
+
+/**
+ * Function to print the middle third characters of each line
+ * This function extracts and prints the middle third characters of each line in the file content array.
+ */
 function printMiddleThirdCharacters($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
 
     foreach ($fileContent as $currentLine) {
-        $currentLineLength = strlen($currentLine);
-        $startingPoint =  intval($currentLineLength / 3);
-        $endPoint = intval(2 * $currentLineLength / 3);
-        $portionToSliceTo = $endPoint - $startingPoint;
-        $slicedString = substr($currentLine, $startingPoint, $portionToSliceTo);
+        $currentLineLength = strlen($currentLine); // Get the length of the current line
+        $startingPoint = intval($currentLineLength / 3); // Calculate the starting point of the middle third
+        $endPoint = intval(2 * $currentLineLength / 3); // Calculate the ending point of the middle third
+        $portionToSliceTo = $endPoint - $startingPoint; // Calculate the length of the middle third
+        $slicedString = substr($currentLine, $startingPoint, $portionToSliceTo); // Get the middle third characters
 
         echo "Line $lineCounter: $slicedString <br>";
-        $lineCounter++;
+        $lineCounter++; // Increment line counter
     }
 }
 
-
+/**
+ * Function to filter strings based on a search term and highlight it
+ * This function filters lines in the file content array that contain a search term and highlights the term.
+ */
 function filterStrings($fileContent)
 {
-
+    // Check if the search term is set and not empty
     if (isset($_POST["textBox"]) && trim($_POST["textBox"]) != "") {
-        $searchTerm = $_POST["textBox"];
+        $searchTerm = $_POST["textBox"]; // Get the search term
 
         $stringsToPrint = [];
-        $numOfStringsToNotPrint = 0;
-        $lineCounter = 0;
-
-
+        $numOfStringsToNotPrint = 0; // Initialize counter for strings not containing the search term
+        $lineCounter = 0; // Initialize line counter
 
         foreach ($fileContent as $currentLine) {
+            // Check if the current line contains the search term
             if (str_contains($currentLine, $searchTerm)) {
+                // Highlight the search term in the current line
                 $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\"> $searchTerm </span>", $currentLine);
                 echo "Line $lineCounter: $currentLine <br>";
             } else {
-                $numOfStringsToNotPrint++;
+                $numOfStringsToNotPrint++; // Increment counter if the search term is not found
             }
-            $lineCounter++;
+            $lineCounter++; // Increment line counter
         }
 
         echo "Number of Strings omitted due to them missing search term: $numOfStringsToNotPrint";
     }
 }
 
+/**
+ * Function to print the base file content
+ * This function prints each line of the file content array.
+ */
 function printBaseFileContent($fileContent)
 {
-    $lineCounter = 1;
+    $lineCounter = 1; // Initialize line counter
 
+    // Check if the file content is set
     if (isset($fileContent)) {
         foreach ($fileContent as $currentLine) {
-            echo "Line $lineCounter: $currentLine <br>";
-            $lineCounter++;
+            echo "Line $lineCounter: $currentLine <br>"; // Print each line of the file content
+            $lineCounter++; // Increment line counter
         }
     }
 }
-
-
 
 ?>
 
@@ -184,6 +215,7 @@ function printBaseFileContent($fileContent)
             <button name="submitButton" type="submit">Submit</button>
             <span class="error">
                 <?php
+                // Display an error message if the file is not selected
                 if (isset($errors['file'])) {
                     echo "Please select a file";
                 }
@@ -191,7 +223,10 @@ function printBaseFileContent($fileContent)
             </span>
         </form>
 
-        <?php if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) : ?>
+        <?php
+        // Check if the form was submitted and a file was uploaded
+        if (isset($_POST["submitButton"]) && $_FILES["filePicker"]['tmp_name']) :
+        ?>
             <section>
                 <h2>Base File Content</h2>
                 <output>
@@ -209,15 +244,13 @@ function printBaseFileContent($fileContent)
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
 
- 
-
             <section>
                 <h2>Number of Common Punctuation Characters per line</h2>
                 <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
             </section>
 
             <section>
-                <h2> Middle Third Characters per line</h2>
+                <h2>Middle Third Characters per line</h2>
                 <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
             </section>
 
@@ -228,6 +261,5 @@ function printBaseFileContent($fileContent)
         <?php endif ?>
     </main>
 </body>
-
 
 </html>
