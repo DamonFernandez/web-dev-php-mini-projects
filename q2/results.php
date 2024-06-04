@@ -35,20 +35,20 @@ $feedbacks = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/results.css">
 </head>
 
 <body>
-    <h1>Results: </h1>
+    <h1>Results </h1>
     <?php foreach ($feedback as $question => &$answer) : ?>
-        <p class="Question"> Question : <?= $question + 1 . " $questions[$question]" ?> </p>
-        <span class=" <?= ($answer['answer'] === $answer['choice']) ? 'correct' : 'incorrect' ?>"> Your Answer: <?= $answer['choice'] ?> </span>
-        <span class="correct"> Correct Answer: <?= $answer['answer'] ?></span>
+            <p class="question"> Question  <?= $question + 1 . ":" . " $questions[$question]" ?> </p>
+            <span class=" <?= ($answer['answer'] === $answer['choice']) ? 'correct' : 'incorrect' ?>"> Your Answer: <?= $answer['choice'] ?> </span>
+            <span class="correct"> Correct Answer: <?= $answer['answer'] ?></span>
     <?php endforeach; ?>
     <p>Score: <?= $score ?></p>
     <p>Correct Answers: <?= $score ?></p>
     <p>Incorrect Answers: <?= count($feedback) - $score ?></p>
-    <p>Percentage: <?= ($score / count($feedback)) * 100 ?>%</p>
+    <p>Percentage Correct: <?= ($score / count($feedback)) * 100 ?>%</p>
     <p>Feedback: <?= $feedbacks[$score] ?></p>
     <form method="get">
         <button type="submit" name="submit">Try Again ?</button>

@@ -19,6 +19,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 1.2em;
 }
 
 main {
@@ -40,69 +41,40 @@ fieldset {
   border-radius: 1em;
 }
 
-form {
-  border-color: var(--gray);
-}
-
-input,
-button,
-label {
+button {
   color: black;
   cursor: pointer;
 }
-fieldset {
-  border-color: black;
-}
-
-fieldset,
-button {
-  background-color: var(--dun);
-  margin: 1em;
-}
-
-span:first-of-type {
-  border-style: double;
-  border-width: 0.4em;
-  border-radius: 1em;
-  border-color: var(--gray);
-  padding: 2em;
-}
 
 button {
-  padding: 0.5em;
+  padding: 1.3em;
   border-radius: 2em;
   border-style: solid;
   border-width: 0.2em;
   background-color: var(--dun);
   font-weight: bold;
+  margin: 1em;
 }
 
-form {
-  display: flex;
-  flex-direction: row;
-  border-style: double;
-  border-width: 0.4em;
-  border-radius: 1em;
-  border-color: var(--gray);
-}
-
-.formColumnWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-fieldset:hover,
 button:hover {
   background-color: rgb(226, 222, 218);
+}
+span {
+  margin-bottom: 1em;
+}
+
+.question {
+  text-align: center;
+  font-weight: bold;
 }
 
 /* Question Classes  */
 .correct {
-  color: green;
+  color: #84ea76;
 }
 
 .incorrect {
-  color: red;
+  color: rgb(244, 50, 50);
 }
 
 .red {
