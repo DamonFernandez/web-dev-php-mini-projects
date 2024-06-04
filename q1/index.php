@@ -159,7 +159,7 @@ function filterStrings($fileContent)
             // Check if the current line contains the search term
             if (str_contains($currentLine, $searchTerm)) {
                 // Highlight the search term in the current line
-                $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\"> $searchTerm </span>", $currentLine);
+                $currentLine = str_ireplace($searchTerm, "<span class=\"highLight\">$searchTerm</span>", $currentLine);
                 echo "Line $lineCounter: $currentLine <br>";
             } else {
                 $numOfStringsToNotPrint++; // Increment counter if the search term is not found
@@ -235,27 +235,27 @@ function printBaseFileContent($fileContent)
             </section>
 
             <section>
-                <h2>Number of words per line</h2>
+                <h2>Number of Words er Line</h2>
                 <output> <?= countNumberOfWordsPerLine($fileContent) ?> </output>
             </section>
 
             <section>
-                <h2>Number of A's and a's per line</h2>
+                <h2>Number of A's and a's Per Line</h2>
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
 
             <section>
-                <h2>Number of Common Punctuation Characters per line</h2>
+                <h2>Number of Common Punctuation Characters Per Line</h2>
                 <output> <?= countNumberOfCommonPunctuationChars($fileContent) ?></output>
             </section>
 
             <section>
-                <h2>Middle Third Characters per line</h2>
+                <h2>Middle Third Characters Per Line</h2>
                 <output> <?= printMiddleThirdCharacters($fileContent) ?></output>
             </section>
 
             <section>
-                <h2>Searching section</h2>
+                <h2>Searching Section</h2>
                 <output> <?= filterStrings($fileContent) ?></output>
             </section>
         <?php endif ?>
