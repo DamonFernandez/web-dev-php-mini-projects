@@ -5,7 +5,7 @@ $fileContent = [];
 
 $errors = [];
 if (isset($_POST["submitButton"]) && isset($_FILES["filePicker"])) {
-
+    var_dump($_FILES);
     $fileContent = getFileContentInArrayForm();
 } else {
     $fileContent = [];
@@ -209,7 +209,7 @@ function printBaseFileContent($fileContent)
                 <output> <?= countNumberOfACharacters($fileContent) ?></output>
             </section>
 
- 
+
 
             <section>
                 <h2>Number of Common Punctuation Characters per line</h2>

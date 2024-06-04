@@ -49,6 +49,7 @@ label {
   color: black;
   cursor: pointer;
 }
+
 fieldset {
   border-color: black;
 }
@@ -94,6 +95,7 @@ fieldset:hover,
 button:hover {
   background-color: rgb(226, 222, 218);
 }
+
 input[type="radio"] {
   margin-right: 0.5em;
 }

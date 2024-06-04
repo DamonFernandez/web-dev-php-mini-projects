@@ -108,6 +108,7 @@ if (isset($_POST['userChoice']) && $numberLosses < 10) {
         </form>
 
         <?php if (isset($_POST['userChoice'])) : ?>
+            <p>Results of game: <?= $currentGame ?></p>
             <p>You Selected: <?= $CHOICES[$userSelection] ?></p>
             <p>The Computer Selected: <?= $CHOICES[$computerSelection] ?></p>
             <p><?= $feedback ?></p>

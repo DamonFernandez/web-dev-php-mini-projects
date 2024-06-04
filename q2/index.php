@@ -60,8 +60,8 @@ if (isset($_POST["submit"])) {
                 <fieldset>
                     <input type="radio" name="choice" value="0" id="0">
                     <label for="0"><?= $questions[$current_question]->getChoice(0) ?></label>
-                    </fieldset>
-            
+                </fieldset>
+
                 <fieldset>
                     <input type="radio" name="choice" value="1" id="1">
                     <label for="1"><?= $questions[$current_question]->getChoice(1) ?></label>
@@ -69,19 +69,19 @@ if (isset($_POST["submit"])) {
                 <button type="submit" name="submit">Submit</button>
             </div>
             <div class="formColumnWrapper">
-                
+
                 <fieldset>
-            <input type="radio" name="choice" value="2" id="2">
-            <label for="2"><?= $questions[$current_question]->getChoice(2) ?></label>
+                    <input type="radio" name="choice" value="2" id="2">
+                    <label for="2"><?= $questions[$current_question]->getChoice(2) ?></label>
                 </fieldset>
-                
+
                 <fieldset>
-            <input type="radio" name="choice" value="3" id="3">
-            <label for="3"><?= $questions[$current_question]->getChoice(3) ?></label>
+                    <input type="radio" name="choice" value="3" id="3">
+                    <label for="3"><?= $questions[$current_question]->getChoice(3) ?></label>
                 </fieldset>
-                    <button name="restart">Restart </button>
+                <button name="restart">Restart </button>
             </div>
-<span class="red <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
+            <span class="red <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
 
         </form>
     </main>

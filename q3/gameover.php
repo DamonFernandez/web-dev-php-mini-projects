@@ -1,16 +1,18 @@
 <?php
-function addScoresToDB(){
+function addScoresToDB()
+{
     include "./includes/library.php";
-    $pdo = connectdb(); 
+    $pdo = connectdb();
 
-    $preparedQuery = $pdo -> prepare(
-    "INSERT INTO rock_paper_spock_scores 
-     VALUES (?, ?)");
+    $preparedQuery = $pdo->prepare(
+        "INSERT INTO rock_paper_spock_scores 
+     VALUES (?, ?)"
+    );
 
 
     $name = $_POST['name'];
     $score = $_SESSION['numberWins'];
-    $preparedQuery -> execute([$name, $score]);
+    $preparedQuery->execute([$name, $score]);
 }
 
 session_start();
@@ -28,17 +30,21 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameOver</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
     <?php include_once "./includes/header.php" ?>
     <h1>GAME OVER!</h1>
     <p>Thank you for playing the game. You have reached the maximum number of losses.</p>
-    <p>Enter your name for highscore</p>
-    <form method="post">
-        <input type="text" name="name" id="name" required>
-        <button type="submit" name="submit" id="submit">Submit</button>
-    </form>
+
+    <div class="game">
+        <p>Enter your name for highscore</p>
+        <form method="post">
+            <input type="text" name="name" id="name" required>
+            <button type="submit" name="submit" id="submit">Submit</button>
+        </form>
+    </div>
 
 </body>
 

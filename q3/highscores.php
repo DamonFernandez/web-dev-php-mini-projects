@@ -14,8 +14,6 @@ $query = $pdo->query(
 );
 
 $queryResults = $query->fetchAll();
-var_dump($queryResults);
-
 
 ?>
 <!DOCTYPE html>
@@ -25,14 +23,17 @@ var_dump($queryResults);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HighScores</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
     <?php include_once "./includes/header.php" ?>
     <h1>High Scores</h1>
-    <ol>
-        <?= renderScores($queryResults) ?>
-    </ol>
+    <div class="game">
+        <ol>
+            <?= renderScores($queryResults) ?>
+        </ol>
+    </div>
 
 </body>
 
