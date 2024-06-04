@@ -23,12 +23,8 @@ function addScoresToDB()
 }
 // Start the session
 session_start();
-$errors = [];
 // Check if the submit button is clicked
-if (isset($_POST['submit'])) {
-    if (empty($_POST['name'])) {
-        $errors['name'] = true;
-    } else {
+if (isset($_POST['submit'])) { {
         addScoresToDB(); // Add the player's score to the database
         session_destroy(); // Destroy the session
         header('location: highscores.php'); // Redirect to the highscores page
@@ -56,7 +52,6 @@ if (isset($_POST['submit'])) {
         <form method="post">
             <input type="text" name="name" id="name" required>
             <button type="submit" name="submit" id="submit">Submit</button>
-            <span class="error <?= !isset($errors['name']) ? 'hidden' : ''  ?>"> No name provided!</span>
         </form>
     </div>
 
