@@ -1,5 +1,15 @@
 # Q1
 
+## Submitting with no file:
+
+### Expected
+
+Should show the message "Please select a file" to the user
+
+### Actual Output
+
+![alt text](image-6.png)
+
 ## Base File Content
 
 Using the file "web_dev_assignment_one_q1_test_file"
@@ -233,3 +243,107 @@ Number of Strings omitted due to them missing search term: 29
 ### Actual Output
 
 ![alt text](image-5.png)
+
+# Q2
+
+## Trying to submit with no choice selected
+
+### Expected
+
+Should present user with the message "you didnt try guessing!"
+
+### Actual Output
+
+![alt text](image-7.png)
+
+## Submiting with a Choice Selected
+
+### Expected
+
+Take user to next question
+
+### Actual Output
+
+#### Before
+
+![alt text](image-8.png)
+
+#### After Hitting Submit
+
+![alt text](image-9.png)
+
+## Restarting While in the Middle of the Quiz
+
+### Expected
+
+Restart the game at question 1
+
+### Actual Output
+
+#### Before Hitting Restart
+
+![alt text](image-10.png)
+
+#### After Hitting Restart
+
+![alt text](image-11.png)
+
+## Hitting Restart on First Question
+
+### Expected
+
+Restarts the game at question 1
+
+### Actual Output
+
+#### Before Hitting Restart
+
+![alt text](image-12.png)
+
+#### After Hitting Restart
+
+![alt text](image-13.png)
+
+## Getting 0 Questions Right
+
+### Expected
+
+Display results to user with zero questions right, 5 questions wrong, and a percentage correct of 0%
+
+### Actual Output
+
+![alt text](image-14.png)
+
+## Getting 3 Questions Right
+
+### Expected
+
+Display results to user with 3 questions right, 2 questions wrong and a percentage correct of 60%
+
+### Actual Output
+
+![alt text](image-15.png)
+
+## Getting 5 Questions Right
+
+### Expected
+
+Display results to user with 5 questions right, 0 questions wrong and a percentage correct of 100%
+
+## Hitting Try Again Button on Results Page
+
+### Expected
+
+Restart the game for the user, starting at the first question
+
+### Actual Output
+
+#### Before
+
+![alt text](image-16.png)
+
+#### After
+
+![alt text](image-17.png)
+
+# Q3

@@ -216,8 +216,8 @@ function printBaseFileContent($fileContent)
             <span class="error">
                 <?php
                 // Display an error message if the file is not selected
-                if (isset($errors['file'])) {
-                    echo "Please select a file";
+                if (!isset($errors['file'])) {
+                    echo "<span class=\"error\">Please select a file </span>";
                 }
                 ?>
             </span>

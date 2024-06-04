@@ -81,10 +81,12 @@ if (isset($_POST["submit"])) {
                 </fieldset>
                     <button name="restart">Restart </button>
             </div>
-<span class="red <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
 
         </form>
     </main>
+
+<span class="error <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
+
 
 </body>
 
