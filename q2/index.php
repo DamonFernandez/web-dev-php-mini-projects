@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/index.css">
 </head>
 
 <body>
@@ -81,10 +81,12 @@ if (isset($_POST["submit"])) {
                 </fieldset>
                 <button name="restart">Restart </button>
             </div>
-            <span class="red <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
 
         </form>
     </main>
+
+    <span class="error <?= !isset($errors['choice']) ? 'hidden' : ''  ?>"> you didnt try guessing!</span>
+
 
 </body>
 

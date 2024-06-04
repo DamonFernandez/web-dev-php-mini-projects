@@ -1,0 +1,86 @@
+/* Import Google Font  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --smoky-black: rgb(44, 40, 38);
+  --jet: rgb(8, 8, 8);
+  --gray: rgb(186, 188, 192);
+  --dun: #d9c5b2ff;
+  --antiflash-white: #f3f3f4ff;
+}
+
+body {
+  background-color: var(--smoky-black);
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+form,
+fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 0.2em;
+  border-radius: 1em;
+}
+
+button {
+  color: black;
+  cursor: pointer;
+}
+
+button {
+  padding: 1.3em;
+  border-radius: 2em;
+  border-style: solid;
+  border-width: 0.2em;
+  background-color: var(--dun);
+  font-weight: bold;
+  margin: 1em;
+}
+
+button:hover {
+  background-color: rgb(226, 222, 218);
+}
+span {
+  margin-bottom: 1em;
+}
+
+.question {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Question Classes  */
+.correct {
+  color: #84ea76;
+}
+
+.incorrect {
+  color: rgb(244, 50, 50);
+}
+
+.red {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}

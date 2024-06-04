@@ -44,6 +44,7 @@ form {
   border-color: var(--gray);
 }
 
+input,
 button,
 label {
   color: black;
@@ -96,21 +97,18 @@ button:hover {
   background-color: rgb(226, 222, 218);
 }
 
-input[type="radio"] {
-  margin-right: 0.5em;
-}
-
 /* Question Classes  */
 .correct {
-  color: green;
+  color: #c4f1be;
 }
 
 .incorrect {
   color: red;
 }
 
-.red {
+.error {
   color: red;
+  margin-top: 2em;
 }
 
 .hidden {

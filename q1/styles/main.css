@@ -126,3 +126,8 @@ input::file-selector-button {
   color: var(--antiflash-white);
   border-radius: 1em;
 }
+
+.error {
+  color: rgb(220, 40, 40);
+  margin-top: 1em;
+}
