@@ -8,7 +8,7 @@ Should show the message "Please select a file" to the user
 
 ### Actual Output
 
-![alt text](image-6.png)
+![ ](testing-screenshots/image-6.png)
 
 ## Base File Content
 
@@ -53,7 +53,7 @@ Line 34: MixedCASElineWithMIXEDcaseLINE
 
 ### Actual Output
 
-![alt text](image.png)
+![ ](testing-screenshots/image.png)
 
 ## Number of words per line
 
@@ -96,7 +96,7 @@ Amount of words in line 34: 1
 
 ### Actual Output:
 
-![alt text](image-1.png)
+![ ](testing-screenshots/image-1.png)
 
 ## Number of A's and a's per line
 
@@ -139,7 +139,7 @@ Amount of a's and A's in line 34: 2
 
 ### Actual Output
 
-![alt text](image-2.png)
+![ ](testing-screenshots/image-2.png)
 
 ## Number of Common Punctuation Characters per line
 
@@ -182,7 +182,7 @@ Amount of common punctuation in line 34: 0
 
 ### Actual Output
 
-![alt text](image-3.png)
+![ ](testing-screenshots/image-3.png)
 
 ## Middle Third Characters per Line
 
@@ -225,7 +225,7 @@ Line 34: ineWithMIX
 
 ### Actual Output
 
-![alt text](image-4.png)
+![ ](testing-screenshots/image-4.png)
 
 ## Searching Section
 
@@ -242,7 +242,7 @@ Number of Strings omitted due to them missing search term: 29
 
 ### Actual Output
 
-![alt text](image-5.png)
+![ ](testing-screenshots/image-5.png)
 
 # Q2
 
@@ -254,7 +254,7 @@ Should present user with the message "you didnt try guessing!"
 
 ### Actual Output
 
-![alt text](image-7.png)
+![ ](testing-screenshots/image-7.png)
 
 ## Submiting with a Choice Selected
 
@@ -266,11 +266,11 @@ Take user to next question
 
 #### Before
 
-![alt text](image-8.png)
+![ ](testing-screenshots/image-8.png)
 
 #### After Hitting Submit
 
-![alt text](image-9.png)
+![ ](testing-screenshots/image-9.png)
 
 ## Restarting While in the Middle of the Quiz
 
@@ -282,11 +282,11 @@ Restart the game at question 1
 
 #### Before Hitting Restart
 
-![alt text](image-10.png)
+![ ](testing-screenshots/image-10.png)
 
 #### After Hitting Restart
 
-![alt text](image-11.png)
+![ ](testing-screenshots/image-11.png)
 
 ## Hitting Restart on First Question
 
@@ -298,11 +298,11 @@ Restarts the game at question 1
 
 #### Before Hitting Restart
 
-![alt text](image-12.png)
+![ ](testing-screenshots/image-12.png)
 
 #### After Hitting Restart
 
-![alt text](image-13.png)
+![ ](testing-screenshots/image-13.png)
 
 ## Getting 0 Questions Right
 
@@ -312,7 +312,7 @@ Display results to user with zero questions right, 5 questions wrong, and a perc
 
 ### Actual Output
 
-![alt text](image-14.png)
+![ ](testing-screenshots/image-14.png)
 
 ## Getting 3 Questions Right
 
@@ -322,13 +322,17 @@ Display results to user with 3 questions right, 2 questions wrong and a percenta
 
 ### Actual Output
 
-![alt text](image-15.png)
+![ ](testing-screenshots/image-15.png)
 
 ## Getting 5 Questions Right
 
 ### Expected
 
 Display results to user with 5 questions right, 0 questions wrong and a percentage correct of 100%
+
+### Actual Output
+
+![ ](testing-screenshots/image-18.png)
 
 ## Hitting Try Again Button on Results Page
 
@@ -340,10 +344,10 @@ Restart the game for the user, starting at the first question
 
 #### Before
 
-![alt text](image-16.png)
+![ ](testing-screenshots/image-16.png)
 
 #### After
 
-![alt text](image-17.png)
+![ ](testing-screenshots/image-17.png)
 
 # Q3
