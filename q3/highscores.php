@@ -1,16 +1,6 @@
 <?php
+session_start();
 
-/**
- * Function to render a list of scores as HTML list items
- */
-function renderScores($setOfScores)
-{
-    // Iterate over each row in the set of scores
-    foreach ($setOfScores as $currRow) {
-        // Output the current row as an HTML list item
-        echo "<li> {$currRow['Name']} - Score: {$currRow['Score']} </li>";
-    }
-}
 
 // Include the library file that contains the database connection function
 include "./includes/library.php";
@@ -51,9 +41,10 @@ $queryResults = $query->fetchAll();
         </thead>
         <tbody>
             <?php foreach ($queryResults as $row) : ?>
+
                 <tr>
-                    <td><?= $row['Name'] ?></td>
-                    <td><?= $row['Score'] ?></td>
+                    <td><?= $row['name'] ?></td>
+                    <td><?= $row['score'] ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

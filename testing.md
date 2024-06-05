@@ -351,3 +351,57 @@ Restart the game for the user, starting at the first question
 ![ ](testing-screenshots/image-17.png)
 
 # Q3
+
+## Inital Load Test
+### Expected Result:
+ The game number should be 1, and both wins and losses should be 0.
+### Actual Output: ![](./testing-screenshots/image-19.png)
+
+## Play Game Test (Win Scenario):
+
+### Expected Result: 
+The feedback should correctly reflect if the user won, and the number of wins should increase by 1 if the user wins.
+### Actual Output:![](./testing-screenshots/image%20copy.png)
+
+
+## Play Game Test (Loss Scenario):
+
+
+### Expected Result:
+ The feedback should correctly reflect if the user lost, and the number of losses should increase by 1 if the user loses.
+### Actual Output:![](./testing-screenshots/image%20copy%203.png)
+
+## Tie Game Test:
+
+### Expected Result: 
+The feedback should indicate a tie, and neither the wins nor the losses should change.
+### Actual Output:![](./testing-screenshots/image%20copy%202.png)
+
+## Game Over Redirection Test:
+
+### Expected Result: 
+After the 10th loss, the user should be redirected to the game over page.
+### Actual Output:![](./testing-screenshots/video1-ezgif.com-optimize.gif)
+IF name is empty:![](./testing-screenshots/image%20copy%209.png)
+
+## High Score Submission Test:
+### Expected Result: 
+The name and score should be correctly saved to the database and the user redirected to the high scores page.
+### Actual Output:![](./testing-screenshots/image%20copy%208.png)
+Actual Output:![](./testing-screenshots/image%20copy%207.png)
+
+## High Scores Display Test:
+
+Expected Result: The page should display the top 20 scores in descending order.
+### Actual Output:![](./testing-screenshots/image%20copy%204.png)
+### Actual Output:![](./testing-screenshots/vid-ezgif.com-video-to-gif-converter.gif)
+## Restart Game Test:
+
+### Expected Result: 
+The game should restart, resetting the wins and losses to 0.
+### Actual Output:![](./testing-screenshots/ezgif.com-video-to-gif-converter.gif)
+## Navigation Test:
+
+### Expected Result:
+ The navigation should work correctly, and the session should be handled appropriately.
+### Actual Output:![](./testing-screenshots/vid3-ezgif.com-video-to-gif-converter.gif)

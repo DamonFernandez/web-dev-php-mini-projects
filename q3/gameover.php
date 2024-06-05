@@ -6,20 +6,36 @@
  * If the player submits their name, the score is added to the database and the user is redirected to the highscores page.
  */
 
+
+// Function to create the table if it does not exist
+function createTableIfNotExists()
+{
+    include "./includes/library.php"; // Include the library file
+    global $pdo; // Access the global variable $pdo
+    $pdo = connectDB(); // Connect to the database
+
+    $preparedQuery = $pdo->prepare( // Prepare the query 
+        "CREATE TABLE IF NOT EXISTS rock_paper_spock_scores (
+            name VARCHAR(50),
+            score INT(11)
+        )"
+    );
+
+    $preparedQuery->execute(); // Execute the query
+}
 // Function to add the player's score to the database
 function addScoresToDB()
 {
-    include "./includes/library.php";
-    $pdo = connectdb();
-
-    $preparedQuery = $pdo->prepare(
+    createTableIfNotExists();
+    global $pdo;
+    $preparedQuery = $pdo->prepare( // Prepare the query
         "INSERT INTO rock_paper_spock_scores
             VALUES (?, ?)"
     );
 
-    $name = $_POST['name'];
-    $score = $_SESSION['numberWins'];
-    $preparedQuery->execute([$name, $score]);
+    $name = $_POST['name']; // Get the player's name
+    $score = $_SESSION['numberWins']; // Get the player's score
+    $preparedQuery->execute([$name, $score]); // Execute the query
 }
 // Start the session
 session_start();

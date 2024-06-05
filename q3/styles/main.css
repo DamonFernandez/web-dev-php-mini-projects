@@ -31,17 +31,24 @@ h1 {
     text-shadow: 0 0 1em #ffc88d;
 }
 
-h1+p,
+
 .feedback p {
     text-align: center;
     font-size: 1em;
     margin: 0.5em 0;
 }
 
-h1+p iframe {
-    margin: 0.5em auto;
-    display: block;
+h1+p {
+    text-align: center;
+    font-size: 1em;
 }
+
+iframe {
+    display: block;
+    margin: 1em auto;
+}
+
+
 
 .game {
     background-color: #f8a145;
@@ -155,17 +162,19 @@ tbody td:nth-child(2) {
     font-weight: bold;
 }
 
-tbody tr:nth-child(1) {
-    background-color: #9cff8d;
-    font-style: italic;
-    font-size: 1.2em;
-}
 
 tbody tr:last-child {
     background-color: #ff8d8d;
     font-style: italic;
 
 }
+
+tbody tr:first-of-type {
+    background-color: #9cff8d;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
 
 input[type="text"] {
     padding: 0.5em;
